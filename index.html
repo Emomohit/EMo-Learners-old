@@ -1114,6 +1114,7 @@
           <form id="emailForm" class="email-form" style="flex-direction: column; max-width: 400px; margin: 1.8rem auto 0; gap: 1rem;" novalidate>
             <input type="text" id="nameInput" class="email-input" style="max-width: 100%;" placeholder="Your Name" required aria-label="Name">
             <input type="email" id="emailInput" class="email-input" style="max-width: 100%;" placeholder="you@college.edu" required aria-label="Email address">
+            <input type="text" id="collegeInput" class="email-input" style="max-width: 100%;" placeholder="College Name" required aria-label="College Name">
             <div style="display: flex; gap: 1rem;">
               <input type="text" id="branchInput" class="email-input" style="max-width: 100%; flex: 1;" placeholder="Branch (e.g. CSE)" required aria-label="Branch">
               <input type="text" id="semInput" class="email-input" style="max-width: 100%; flex: 1;" placeholder="Semester (e.g. 3rd)" required aria-label="Semester">
@@ -1266,6 +1267,7 @@
       e.preventDefault();
       var nameInput = document.getElementById('nameInput');
       var emailInput = document.getElementById('emailInput');
+      var collegeInput = document.getElementById('collegeInput');
       var branchInput = document.getElementById('branchInput');
       var semInput = document.getElementById('semInput');
       var btn = emailForm.querySelector('button[type="submit"]');
@@ -1279,6 +1281,7 @@
       var payload = { 
         Name: nameInput.value,
         Email: emailInput.value,
+        College: collegeInput.value,
         Branch: branchInput.value,
         Semester: semInput.value
       };
