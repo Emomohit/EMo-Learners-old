@@ -1112,11 +1112,11 @@
           <h2>Get Weekly AI Tools, Resources &amp; Opportunities</h2>
           <p>Straight to your inbox. No spam, unsubscribe anytime.</p>
           <form id="emailForm" class="email-form" style="flex-direction: column; max-width: 400px; margin: 1.8rem auto 0; gap: 1rem;" novalidate>
-            <input type="text" id="nameInput" class="email-input" style="max-width: 100%;" placeholder="Your Name" required aria-label="Name">
-            <input type="email" id="emailInput" class="email-input" style="max-width: 100%;" placeholder="you@college.edu" required aria-label="Email address">
-            <div style="display: flex; gap: 1rem;">
-              <input type="text" id="branchInput" class="email-input" style="max-width: 100%; flex: 1;" placeholder="Branch (e.g. CSE)" required aria-label="Branch">
-              <input type="text" id="semInput" class="email-input" style="max-width: 100%; flex: 1;" placeholder="Semester (e.g. 3rd)" required aria-label="Semester">
+            <input type="text" id="nameInput" class="email-input" style="flex: none; width: 100%; max-width: 100%;" placeholder="Your Name" required aria-label="Name">
+            <input type="email" id="emailInput" class="email-input" style="flex: none; width: 100%; max-width: 100%;" placeholder="you@college.edu" required aria-label="Email address">
+            <div style="display: flex; gap: 1rem; width: 100%;">
+              <input type="text" id="branchInput" class="email-input" style="flex: 1 1 0%; min-width: 0; max-width: 100%;" placeholder="Branch" required aria-label="Branch">
+              <input type="text" id="semInput" class="email-input" style="flex: 1 1 0%; min-width: 0; max-width: 100%;" placeholder="Semester" required aria-label="Semester">
             </div>
             <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; border-radius: 12px;">Join Free</button>
           </form>
