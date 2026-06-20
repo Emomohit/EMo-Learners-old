@@ -12,15 +12,18 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { Email } = req.body;
+    const { Name, Email, Branch, Semester } = req.body;
 
-    if (!Email) {
-      return res.status(400).json({ error: 'Email is required.' });
+    if (!Email || !Name) {
+      return res.status(400).json({ error: 'Name and Email are required.' });
     }
 
     // Google Apps Script expects x-www-form-urlencoded format
     const formData = new URLSearchParams();
+    formData.append('Name', Name || '');
     formData.append('Email', Email);
+    formData.append('Branch', Branch || '');
+    formData.append('Semester', Semester || '');
 
     // Make the request to Google Apps Script from the backend
     const response = await fetch(scriptURL, {
