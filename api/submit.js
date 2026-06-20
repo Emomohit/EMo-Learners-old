@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { Name, Email, Branch, Semester } = req.body;
+    const { Name, Email, College, Branch, Semester } = req.body;
 
     if (!Email || !Name) {
       return res.status(400).json({ error: 'Name and Email are required.' });
@@ -22,6 +22,7 @@ export default async function handler(req, res) {
     const formData = new URLSearchParams();
     formData.append('Name', Name || '');
     formData.append('Email', Email);
+    formData.append('College', College || '');
     formData.append('Branch', Branch || '');
     formData.append('Semester', Semester || '');
 
