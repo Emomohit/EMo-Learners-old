@@ -160,6 +160,13 @@
       .compare-row { border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem !important; }
     }
 
+
+    /* Gen-Z UI */
+    @keyframes glow-pulse { 0%,100% { box-shadow: 0 0 15px rgba(255,69,0,0.05); } 50% { box-shadow: 0 0 35px rgba(255,69,0,0.15); } }
+    .platform-card:hover { animation: glow-pulse 2s ease-in-out; }
+    .left-badge { animation: float 4s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+
     /* ─── COMPREHENSIVE MOBILE FIXES ─── */
     @media (max-width: 480px) {
       .join-left, .join-right { padding: 3rem 1.5rem !important; }
@@ -217,6 +224,10 @@
               <div class="perk-title">Internship Board — Coming Soon</div>
               <div class="perk-desc">Be first in line when we launch verified internship listings.</div>
             </div>
+          </div>
+
+          <div style="margin-top:2rem; border-radius:12px; overflow:hidden; border:1px solid rgba(255,69,0,0.15); opacity:0.8;">
+            <img src="coding-hero.png" alt="Start Building" style="width:100%; display:block; max-height:200px; object-fit:cover;">
           </div>
         </div>
       </div>

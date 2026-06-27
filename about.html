@@ -155,6 +155,15 @@
       .compare-row { border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem !important; }
     }
 
+
+    /* Gen-Z UI */
+    @keyframes glow-pulse { 0%,100% { box-shadow: 0 0 20px rgba(255,69,0,0.05); } 50% { box-shadow: 0 0 40px rgba(255,69,0,0.15); } }
+    .story-block:hover { animation: glow-pulse 2s ease-in-out; }
+    .value-card:hover { animation: glow-pulse 2s ease-in-out; }
+    .ticker { background: linear-gradient(90deg, #FF4500, #ff8c00, #FF4500); background-size: 200% 100%; animation: gradient-shift 4s linear infinite; }
+    @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .founder-card { animation: glow-pulse 4s ease-in-out infinite; }
+
     /* ─── COMPREHENSIVE MOBILE FIXES ─── */
     @media (max-width: 480px) {
       .hero-heading { font-size: clamp(2.5rem, 10vw, 4rem) !important; }
@@ -278,10 +287,10 @@
   <section class="gallery-section" style="padding: 2rem 3rem 6rem; text-align: center;">
     <div class="gallery-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
       <div style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,69,0,0.2); transform: rotate(-2deg); transition: transform 0.3s;" onmouseover="this.style.transform='rotate(0deg)'" onmouseout="this.style.transform='rotate(-2deg)'">
-        <img src="hero.png" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9;" alt="EMO Learners Platform">
+        <img src="coding-hero.png" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9;" alt="EMO Learners Platform">
       </div>
       <div style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,255,136,0.2); transform: rotate(2deg); transition: transform 0.3s;" onmouseover="this.style.transform='rotate(0deg)'" onmouseout="this.style.transform='rotate(2deg)'">
-        <img src="community.png" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9;" alt="EMO Community">
+        <img src="community-genz.png" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9;" alt="EMO Community">
       </div>
     </div>
   </section>
