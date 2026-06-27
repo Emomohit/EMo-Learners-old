@@ -810,44 +810,46 @@
     </section>
 
     <!-- ===================== SOCIAL PROOF ===================== -->
-    <section id="social-proof" style="padding: 0; border-top: 4px solid #000; border-bottom: 4px solid #000; background: #fff; overflow: hidden; display: grid; grid-template-columns: 1fr; align-items: center;">
-      <div style="padding: 4rem 2rem; display: flex; justify-content: space-around; gap: 2rem; flex-wrap: wrap; text-align: center; border-bottom: 4px solid #000;" data-reveal>
+    <section id="social-proof" style="padding: 4rem 0; border-top: 6px solid #000; border-bottom: 6px solid #000; background: #fef08a; position: relative; overflow: hidden;">
+      <div style="display: flex; justify-content: space-around; gap: 2rem; flex-wrap: wrap; text-align: center; max-width: 1000px; margin: 0 auto; background: #fff; border: 4px solid #000; box-shadow: 12px 12px 0 var(--ion); padding: 3rem 2rem; transform: rotate(-1deg);" data-reveal>
         <div>
-          <h3 style="font-size: 3rem; color: #000; margin-bottom: 0; font-weight: 800; text-shadow: 2px 2px 0 var(--flame);">Growing</h3>
-          <p style="color: #000; font-weight: 800; font-size: 1rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Student Community</p>
+          <h3 style="font-size: clamp(3rem, 5vw, 4rem); color: #000; margin-bottom: 0; font-weight: 800; font-family: var(--font-display); text-shadow: 4px 4px 0 var(--flame); line-height: 1;">Growing</h3>
+          <p style="color: #000; font-weight: 800; font-size: 1.1rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; background: #000; color: #fff; padding: 0.2rem 0.5rem; display: inline-block; margin-top: 0.5rem;">Student Community</p>
         </div>
         <div>
-          <h3 style="font-size: 3rem; color: #000; margin-bottom: 0; font-weight: 800; text-shadow: 2px 2px 0 var(--flame);">200+</h3>
-          <p style="color: #000; font-weight: 800; font-size: 1rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Resources Curated</p>
+          <h3 style="font-size: clamp(3rem, 5vw, 4rem); color: #000; margin-bottom: 0; font-weight: 800; font-family: var(--font-display); text-shadow: 4px 4px 0 var(--flame); line-height: 1;">200+</h3>
+          <p style="color: #000; font-weight: 800; font-size: 1.1rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; background: #000; color: #fff; padding: 0.2rem 0.5rem; display: inline-block; margin-top: 0.5rem;">Resources Curated</p>
         </div>
-        <div>
+      </div>
+    </section>
     <!-- ===================== FOUNDER ===================== -->
-    <section id="founder">
-      <div class="container founder-grid">
-        <div class="founder-card" data-reveal>
-          <div class="founder-badge">
-            <img src="founder.jpg" alt="Mohit Ahirwar" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.1) saturate(1.1);">
+    <section id="founder" style="padding: 6rem 0; background: #fff;">
+      <div class="container founder-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center;">
+        <div class="founder-card" data-reveal style="border: 6px solid #000; box-shadow: 16px 16px 0 #000; transform: rotate(2deg); background: #fff; padding: 1rem;">
+          <div class="founder-badge" style="border: 4px solid #000; overflow: hidden; height: 400px;">
+            <img src="founder.jpg" alt="Mohit Ahirwar" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.2) grayscale(0.2);">
           </div>
+          <div style="text-align: center; margin-top: 1rem; font-family: var(--font-mono); font-weight: 800; text-transform: uppercase; font-size: 1.2rem;">@mohitahirwar</div>
         </div>
-        <div class="founder-copy" data-reveal>
-          <span class="eyebrow">About the founder</span>
-          <h3 class="founder-greeting">Mohit Ahirwar</h3>
-          <p class="bio">Founder of EMO Learners &bull; Building a platform that helps students learn AI, develop skills, and discover career opportunities.</p>
-          <div style="margin-top:1.5rem;">
-            <a href="https://mohitahirwarportfolio.vercel.app/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">View Details</a>
+        <div class="founder-copy" data-reveal style="border: 4px solid #000; box-shadow: 12px 12px 0 var(--flame); padding: 3rem; background: #fbcfe8; transform: rotate(-1deg);">
+          <span class="eyebrow" style="background: #000; color: #fff; font-weight: 800; padding: 0.3rem 0.6rem; border: 2px solid #000; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem;">About the founder</span>
+          <h3 class="founder-greeting" style="font-size: clamp(2.5rem, 4vw, 3.5rem); font-family: var(--font-display); font-weight: 800; text-transform: uppercase; margin: 1rem 0; color: #000; line-height: 1;">Mohit Ahirwar</h3>
+          <p class="bio" style="font-size: 1.2rem; font-weight: 600; color: #000; line-height: 1.6;">Building a platform that helps students learn AI, develop real-world skills, and discover career opportunities that actually matter.</p>
+          <div style="margin-top:2rem;">
+            <a href="https://mohitahirwarportfolio.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" style="background: #000; color: #fff; font-size: 1.1rem; padding: 1rem 2rem; box-shadow: 4px 4px 0 var(--ion); border-color: #000;">View Portfolio →</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===================== CTA ===================== -->
-    <section id="cta">
+    <section id="cta" style="padding: 8rem 0; background: #bbf7d0; border-top: 6px solid #000;">
       <div class="container">
-        <div class="cta-panel" data-reveal>
-          <h2>Ready to Level Up?</h2>
-          <p>People join communities, not just pages. Jump in and start learning smarter today.</p>
+        <div class="cta-panel" data-reveal style="background: #fff; border: 6px solid #000; box-shadow: 20px 20px 0 #000; padding: 5rem 2rem; text-align: center; max-width: 900px; margin: 0 auto; transform: rotate(1deg);">
+          <h2 style="font-size: clamp(3rem, 6vw, 5rem); font-family: var(--font-display); font-weight: 900; text-transform: uppercase; color: #000; line-height: 1; margin-bottom: 1.5rem; text-shadow: 4px 4px 0 var(--ion);">Ready to Level Up?</h2>
+          <p style="font-size: 1.5rem; font-weight: 600; color: #000; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">People join communities, not just pages. Jump in and start learning smarter today.</p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="https://t.me/emolarners" target="_blank" rel="noopener" class="btn btn-primary">🚀 Join 50+ Students Learning Smarter</a>
+            <a href="https://t.me/emolarners" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 1.5rem; padding: 1.5rem 3rem; background: var(--flame); border-color: #000; color: #000; box-shadow: 8px 8px 0 #000;">🚀 Join 50+ Students Learning Smarter</a>
           </div>
         </div>
       </div>
