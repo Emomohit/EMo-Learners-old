@@ -85,7 +85,17 @@
       .bento-grid { grid-template-columns: 1fr; }
       nav { display: none; }
     }
-  </style>
+  
+    /* 3D Tilt CSS */
+    .tilt-card {
+      transition: transform 0.1s ease-out;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .tilt-card > * {
+      transform: translateZ(20px);
+    }
+</style>
 </head>
 <body>
 
@@ -120,7 +130,7 @@
         <a href="https://instagram.com/emolearners" target="_blank" class="btn">🚀 Follow Us</a>
       </div>
     </div>
-    <div class="hero-image">
+    <div class="hero-image tilt-card">
       <div class="badge">100% FREE</div>
       <img src="hero.png" alt="Indian Student Coding">
     </div>
@@ -147,19 +157,19 @@
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
         
-        <div style="border: 2px solid #000; padding: 2rem; background: #fff; display: flex; flex-direction: column; gap: 1rem;">
+        <div style="border: 2px solid #000; padding: 2rem; background: #fff; display: flex; flex-direction: column;" class="tilt-card gap: 1rem;">
           <div style="font-size: 3rem;">📚</div>
           <h3 style="font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 2.5rem; text-transform: uppercase;">Outdated Syllabus</h3>
           <p style="font-size: 1.1rem; font-weight: 500;">Learning 10-year-old theory won't get you a job today. The industry moves fast, college doesn't.</p>
         </div>
 
-        <div style="border: 2px solid #000; padding: 2rem; background: #00FF66; display: flex; flex-direction: column; gap: 1rem;">
+        <div style="border: 2px solid #000; padding: 2rem; background: #00FF66; display: flex; flex-direction: column;" class="tilt-card gap: 1rem;">
           <div style="font-size: 3rem;">📉</div>
           <h3 style="font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 2.5rem; text-transform: uppercase;">No Real Skills</h3>
           <p style="font-size: 1.1rem; font-weight: 500;">Degrees don't build software. Companies hire for what you can build, not what you can memorize.</p>
         </div>
 
-        <div style="border: 2px solid #000; padding: 2rem; background: #000; color: #fff; display: flex; flex-direction: column; gap: 1rem;">
+        <div style="border: 2px solid #000; padding: 2rem; background: #000; color: #fff; display: flex; flex-direction: column;" class="tilt-card gap: 1rem;">
           <div style="font-size: 3rem;">🤯</div>
           <h3 style="font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 2.5rem; text-transform: uppercase;">Info Overload</h3>
           <p style="font-size: 1.1rem; font-weight: 500; color: #ccc;">Too many YouTube tutorials, no clear roadmap. You end up in tutorial hell making zero progress.</p>
@@ -227,7 +237,7 @@
     </div>
     <div class="bento-grid">
       
-      <div class="bento-card yellow">
+      <div class="bento-card yellow tilt-card">
         <div class="icon">🤖</div>
         <div>
           <h3>AI TOOLS</h3>
@@ -236,7 +246,7 @@
         <a href="/resources.html" class="btn btn-dark">View Directory →</a>
       </div>
 
-      <div class="bento-card blue">
+      <div class="bento-card blue tilt-card">
         <div class="icon">💻</div>
         <div>
           <h3>INTERNSHIPS</h3>
@@ -245,7 +255,7 @@
         <a href="/internships.html" class="btn" style="background: #fff; color: #000;">Coming Soon →</a>
       </div>
 
-      <div class="bento-card">
+      <div class="bento-card tilt-card">
         <div class="icon">📈</div>
         <div>
           <h3>COMMUNITY</h3>
@@ -293,5 +303,38 @@
   </footer>
 
 
+
+  <!-- 3D Tilt Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tiltCards = document.querySelectorAll(".tilt-card");
+      
+      tiltCards.forEach(card => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = ((y - centerY) / centerY) * -15; // Max 15 deg tilt
+          const rotateY = ((x - centerX) / centerX) * 15;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+        
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+          // Smooth return transition
+          card.style.transition = "transform 0.5s ease";
+          setTimeout(() => {
+            card.style.transition = "transform 0.1s ease-out";
+          }, 500);
+        });
+      });
+    });
+  </script>
 </body>
+
 </html>
