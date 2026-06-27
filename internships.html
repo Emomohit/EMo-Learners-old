@@ -35,7 +35,7 @@
     nav a:hover,nav a.active{color:var(--white);}
     .nav-cta{background:var(--orange);color:#000;padding:0.6rem 1.5rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;border-radius:4px;transition:all 0.2s;}
     .nav-cta:hover{background:#ff6633;transform:translateY(-1px);}
-    @media(max-width:768px){nav{display:none;}header{padding:1rem 1.5rem;}}
+    @media(max-width:768px){header{padding:1rem 1.5rem;}}
 
     /* MAIN CONTENT */
     .page-wrap {
@@ -103,7 +103,25 @@
     footer{background:#030303;border-top:1px solid rgba(255,255,255,0.06);padding:2rem 3rem;text-align:center;color:rgba(255,255,255,0.2);font-size:0.85rem;}
 
     @media(max-width:700px){.preview-cards{grid-template-columns:1fr;}.page-wrap{padding:4rem 1.5rem;}}
-  \n    @media(pointer: coarse) { .cursor, .cursor-trail { display: none !important; } }\n  </style>
+  \n    @media(pointer: coarse) { .cursor, .cursor-trail { display: none !important; } }\n  
+    /* HAMBURGER MENU & MOBILE RESPONSIVENESS */
+    .hamburger { display: none; font-size: 2rem; cursor: pointer; color: var(--orange); user-select: none; z-index: 1001; }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      header nav, header .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(8,8,8,0.98); padding: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+      header nav.open, header .nav-links.open { display: flex !important; }
+      header nav a, header .nav-links a { font-size: 1.2rem; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+      .nav-cta { display: none; }
+      
+      /* Global Padding Fixes */
+      .about-hero, .story-section, .values-section, .mission-section, .gallery-section, .hero, .floating-section, .problem-section, .compare-section, .faq-section, .bento-section, .community-section, .cta-section { padding: 4rem 1.5rem !important; }
+      
+      /* Grid Fixes */
+      .gallery-grid { grid-template-columns: 1fr !important; }
+      .compare-header, .compare-row { grid-template-columns: 1fr !important; gap: 0.5rem; text-align: center; }
+      .compare-row { border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -187,5 +205,28 @@
     function animTrail(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx-20+'px';trail.style.top=ty-20+'px';requestAnimationFrame(animTrail);}
     animTrail();
   </script>
-</body>
+
+  <script>
+    // Hamburger Menu Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('header');
+      if (header && !document.querySelector('.hamburger')) {
+        const hamburger = document.createElement('div');
+        hamburger.className = 'hamburger';
+        hamburger.innerHTML = '☰';
+        
+        // Find nav or .nav-links
+        const nav = header.querySelector('nav') || header.querySelector('.nav-links');
+        
+        if (nav) {
+          header.insertBefore(hamburger, nav.nextSibling);
+          hamburger.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            hamburger.innerHTML = nav.classList.contains('open') ? '✕' : '☰';
+          });
+        }
+      }
+    });
+  </script>
+\n</body>
 </html>
