@@ -998,13 +998,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700;900&display=swap');
 
         :root {
-      --nyc-blue: #121212; /* Switched to Dark for better contrast with Orange */
-      --nyc-yellow: #FF4500; /* Electric Orange */
-      --nyc-font-head: 'Bricolage Grotesque', sans-serif;
-      --nyc-font-body: 'Outfit', sans-serif;
-      --nyc-border: 2px solid #000;
-      --emo-shadow: 6px 6px 0px #000;
-    }
+            --accent: #00d4ff;
+            --accent2: #8b5cf6;
+            --accent3: #ec4899;
+            --glow: rgba(0,212,255,0.25);
+            --glow2: rgba(139,92,246,0.2);
+        }
 
         body {
             background: linear-gradient(135deg, #060918 0%, #0d1117 30%, #060a18 60%, #0a0618 100%) !important;
@@ -1296,146 +1295,25 @@
         .emo-reveal.vis { opacity:1;transform:translateY(0); }
 
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
-    <style>
-        body, html { background: #fff !important; color: #000 !important; font-family: 'Plus Jakarta Sans', sans-serif !important; animation: none !important; }
-        header { background: #fff !important; border-bottom: 4px solid #000 !important; box-shadow: 0 4px 0 #000 !important; backdrop-filter: none !important; }
-        .logo { background: none !important; color: #000 !important; -webkit-text-fill-color: #000 !important; text-shadow: none !important; filter: none !important; animation: none !important; font-family: 'Bricolage Grotesque', sans-serif !important; }
-        .nav-links a { color: #000 !important; font-weight: 800 !important; text-transform: uppercase !important; border: 2px solid transparent; }
-        .nav-links a:hover { border: 2px solid #000 !important; background: #e0f2fe !important; transform: none !important; }
-        .nav-links a::before { display: none !important; }
-        .search-input { background: #fff !important; border: 3px solid #000 !important; color: #000 !important; border-radius: 0 !important; font-weight: 600 !important; box-shadow: 4px 4px 0 #000 !important; }
-        .search-input::placeholder { color: #555 !important; }
-        h1, h2, h3, h4, .section-title { font-family: 'Bricolage Grotesque', sans-serif !important; color: #000 !important; background: none !important; -webkit-text-fill-color: #000 !important; text-shadow: none !important; text-transform: uppercase !important; font-weight: 800 !important; }
-        .hero::before { display: none !important; }
-        .feature-card, .branch-card, .subject-card, .unit-card, .tool-card, .video-card { background: #fff !important; border: 3px solid #000 !important; box-shadow: 6px 6px 0 #000 !important; border-radius: 0 !important; color: #000 !important; animation: none !important; transform: none !important; transition: transform 0.2s, box-shadow 0.2s !important; }
-        .feature-card::before, .branch-card::after { display: none !important; }
-        .feature-card:hover, .branch-card:hover, .subject-card:hover, .unit-card:hover, .tool-card:hover, .video-card:hover { transform: translate(-2px, -2px) !important; box-shadow: 10px 10px 0 var(--flame, #ff5722) !important; }
-        .btn, .btn-secondary { background: #ff5722 !important; border: 3px solid #000 !important; box-shadow: 4px 4px 0 #000 !important; border-radius: 0 !important; color: #000 !important; text-transform: uppercase !important; font-weight: 800 !important; font-family: 'Plus Jakarta Sans', sans-serif !important; }
-        .btn::before { display: none !important; }
-        .btn:hover, .btn-secondary:hover { transform: translate(-2px, -2px) !important; box-shadow: 6px 6px 0 #000 !important; }
-        .nav-btn { background: #ff5722 !important; border: 3px solid #000 !important; color: #000 !important; border-radius: 0 !important; }
-        .video-thumbnail { border-bottom: 3px solid #000 !important; }
-        .subject-badge, .tool-badge { background: #000 !important; color: #fff !important; font-weight: 800 !important; border: 2px solid #000 !important; }
-        .unit-card .status { color: #ff5722 !important; font-weight: 800 !important; }
-        .tool-link { background: #3b82f6 !important; border: 3px solid #000 !important; box-shadow: 4px 4px 0 #000 !important; color: #000 !important; font-weight: 800 !important; border-radius: 0 !important; }
-        .search-results { background: #fff !important; border: 4px solid #000 !important; box-shadow: 8px 8px 0 #000 !important; color: #000 !important; border-radius: 0 !important; }
-        .search-result-item { border-bottom: 2px solid #000 !important; color: #000 !important; }
-        .search-result-item:hover { background: #fef08a !important; color: #000 !important; }
-        /* Reset particle stuff */
-        #particles-js, .circuit-bg { display: none !important; }
-        .floating-elements { display: none !important; }
-        .hero { padding: 180px 0 100px; background: #e0f2fe; border-bottom: 4px solid #000; }
-        .hero h1 { text-shadow: 4px 4px 0 #000 !important; -webkit-text-fill-color: #fff !important; }
-    </style>
-<style>
-    /* Aggressive fix for text visibility */
-    body * { color: #000 !important; text-shadow: none !important; }
-    .hero h1 { -webkit-text-fill-color: #fff !important; color: #fff !important; text-shadow: 4px 4px 0 #000 !important; }
-    .subject-badge, .tool-badge, .subject-badge *, .tool-badge * { color: #fff !important; }
-    .telegram-btn, .telegram-btn * { color: #000 !important; }
-    .nav-links a { color: #000 !important; }
-    .search-input { color: #000 !important; }
-    .search-input::placeholder { color: #555 !important; }
-    .stat-number { -webkit-text-fill-color: #000 !important; color: #000 !important; }
-    .logo { -webkit-text-fill-color: #000 !important; color: #000 !important; }
-</style>
-<style>
-/* DARK NEO-BRUTALIST OVERRIDES */
-:root {
-  --emo-primary: #FF4500;
-  --emo-secondary: #00FF66;
-  --emo-bg: #0a0a0a;
-  --emo-card: #141414;
-  --emo-text: #ffffff;
-  --emo-border: 2px solid #333;
-}
-body {
-  background: var(--emo-bg) !important;
-  color: var(--emo-text) !important;
-  font-family: 'Outfit', sans-serif !important;
-}
-h1, h2, h3, h4, .logo {
-  font-family: 'Bricolage Grotesque', sans-serif !important;
-  text-transform: uppercase;
-}
-/* Force the header to be dark */
-header {
-  background: #000 !important;
-  border-bottom: 2px solid #333 !important;
-}
-header a {
-  color: #fff !important;
-}
-/* Cards */
-.resource-card, .tool-card, .card {
-  background: var(--emo-card) !important;
-  border: var(--emo-border) !important;
-  box-shadow: 4px 4px 0px var(--emo-primary) !important;
-  border-radius: 0 !important;
-  color: #fff !important;
-  transition: transform 0.2s, box-shadow 0.2s !important;
-}
-.resource-card:hover, .tool-card:hover, .card:hover {
-  transform: translate(-4px, -4px) !important;
-  box-shadow: 8px 8px 0px var(--emo-secondary) !important;
-}
-/* Fix text colors inside cards */
-.resource-card h3, .tool-card h3, .card h3 {
-  color: var(--emo-secondary) !important;
-}
-.resource-card p, .tool-card p, .card p, .description {
-  color: #ccc !important;
-}
-/* Buttons and badges */
-.btn, .badge, .tag, button {
-  background: var(--emo-primary) !important;
-  color: #fff !important;
-  border: 2px solid #000 !important;
-  border-radius: 0 !important;
-  font-family: 'Bricolage Grotesque', sans-serif !important;
-  text-transform: uppercase;
-}
-.btn:hover, button:hover {
-  background: var(--emo-secondary) !important;
-  color: #000 !important;
-}
-/* Inputs */
-input, .search-input {
-  background: #000 !important;
-  border: 2px solid #333 !important;
-  color: #fff !important;
-  border-radius: 0 !important;
-}
-input:focus, .search-input:focus {
-  border-color: var(--emo-primary) !important;
-  box-shadow: 4px 4px 0px var(--emo-primary) !important;
-}
-/* Modals / Overlays */
-.modal-content, .popup {
-  background: #000 !important;
-  border: 2px solid #333 !important;
-  box-shadow: 8px 8px 0px var(--emo-primary) !important;
-}
-</style>
 </head>
 <body>
 <canvas id="emo-particles"></canvas>
-    
-  <!-- Header -->
-  <header style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid #000; background: #fff; font-family: 'Poppins', sans-serif;">
-    <a href="/index.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 2rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #000; text-transform: uppercase;">🚀 EMO Learners</a>
-    <nav style="display: flex; gap: 2rem;">
-      <a href="/index.html" style="font-weight: 600; font-size: 1.1rem; color: #000; text-decoration: none;">Home</a>
-      <a href="/about.html" style="font-weight: 600; font-size: 1.1rem; color: #000; text-decoration: none;">About</a>
-      <a href="/resources.html" style="font-weight: 600; font-size: 1.1rem; color: #000; text-decoration: none;">Resources</a>
-      <a href="/internships.html" style="font-weight: 600; font-size: 1.1rem; color: #000; text-decoration: none;">Internships</a>
-    </nav>
-    <div style="display: flex; gap: 1rem; align-items: center;">
-      
-    </div>
-  </header>
-
+    <header>
+        <nav>
+            <div class="logo" onclick="showPage('home')">EMO Learners</div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="🔍 Search branches, subjects, topics..." id="searchInput">
+                <div class="search-icon">🔍</div>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="scrollToSection('features')">Features</a></li>
+                <li><a onclick="scrollToSection('branches')">Branches</a></li>
+                <li><a onclick="scrollToSection('contact-section')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- HOME PAGE -->
     <div id="home" class="page-content active">
@@ -2499,11 +2377,20 @@ input:focus, .search-input:focus {
         }
 
         function showResource(semester, type) {
-            showSuccessMessage(`🔥 Loading ${semester} ${type}... Redirecting to Telegram...`);
+            const messages = {
+                'Notes': `📚 ${semester} ${type} are available in our Telegram group!\n\nJoin now to get:\n✅ Complete chapter-wise notes\n✅ Handwritten notes\n✅ PPT presentations\n✅ Reference books\n✅ Video lecture links`,
+                'Papers': `📝 ${semester} Question ${type} collection!\n\nAvailable in Telegram:\n✅ Last 5 years papers\n✅ Sample papers\n✅ Model papers\n✅ Solutions with explanations\n✅ University papers`,
+                'Important': `🎯 ${semester} ${type} Questions!\n\nGet from Telegram:\n✅ High weightage topics\n✅ Must-know concepts\n✅ Formula sheets\n✅ Quick revision notes\n✅ Short tricks & tips`,
+                'Syllabus': `📖 ${semester} Complete Syllabus!\n\nDownload from Telegram:\n✅ Official syllabus PDF\n✅ Topic-wise breakdown\n✅ Learning outcomes\n✅ Recommended books\n✅ Reference materials`
+            };
+
+            showSuccessMessage(`🔥 Loading ${semester} ${type}...`);
             
             setTimeout(() => {
-                joinTelegram();
-            }, 1500);
+                if (confirm(messages[type] + '\n\nWould you like to join our Telegram group now?')) {
+                    joinTelegram();
+                }
+            }, 1000);
         }
 
         function joinTelegram() {
@@ -2514,10 +2401,10 @@ input:focus, .search-input:focus {
         }
 
         function contactCreator() {
-            showSuccessMessage('📱 Redirecting to Contact...');
+            showSuccessMessage('📧 Opening contact options...');
             setTimeout(() => {
-                window.open('https://t.me/Emomohit', '_blank');
-            }, 1000);
+                
+            }, 500);
         }
 
         function showSuccessMessage(message) {
@@ -2659,4 +2546,3 @@ input:focus, .search-input:focus {
     </script>
 </body>
 </html>
-
