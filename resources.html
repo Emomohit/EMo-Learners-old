@@ -1327,6 +1327,18 @@
         .hero { padding: 180px 0 100px; background: #e0f2fe; border-bottom: 4px solid #000; }
         .hero h1 { text-shadow: 4px 4px 0 #000 !important; -webkit-text-fill-color: #fff !important; }
     </style>
+<style>
+    /* Aggressive fix for text visibility */
+    body * { color: #000 !important; text-shadow: none !important; }
+    .hero h1 { -webkit-text-fill-color: #fff !important; color: #fff !important; text-shadow: 4px 4px 0 #000 !important; }
+    .subject-badge, .tool-badge, .subject-badge *, .tool-badge * { color: #fff !important; }
+    .telegram-btn, .telegram-btn * { color: #000 !important; }
+    .nav-links a { color: #000 !important; }
+    .search-input { color: #000 !important; }
+    .search-input::placeholder { color: #555 !important; }
+    .stat-number { -webkit-text-fill-color: #000 !important; color: #000 !important; }
+    .logo { -webkit-text-fill-color: #000 !important; color: #000 !important; }
+</style>
 </head>
 <body>
 <canvas id="emo-particles"></canvas>
@@ -2569,3 +2581,4 @@
     </script>
 </body>
 </html>
+

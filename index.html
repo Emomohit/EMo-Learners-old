@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EMO Learners ‚Äî Learn, Build &amp; Succeed</title>
+<title>EMO Learners ó Learn, Build &amp; Succeed</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -590,7 +590,7 @@
     position:relative;
   }
   .founder-badge::before{
-    content:"üöÄ";
+    content:"??";
     position:absolute;
     top:-14px; right:-14px;
     width:40px; height:40px;
@@ -721,6 +721,42 @@
     [data-reveal]{ opacity:1; transform:none; }
   }
 </style>
+<style>
+/* Brutalist Overrides for Restored Sections */
+.problem-card, .solution-step, .solution-card, .compare-card, .tilt-card, .shot-card, .why-panel, .resource-card, .email-panel, .content-panel {
+    background: #fff !important;
+    border: 4px solid #000 !important;
+    box-shadow: 8px 8px 0 #000 !important;
+    border-radius: 0 !important;
+    color: #000 !important;
+    transform: none !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.problem-card:hover, .solution-step:hover, .solution-card:hover, .compare-card:hover, .tilt-card:hover, .shot-card:hover, .resource-card:hover, .email-panel:hover {
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 12px 12px 0 var(--flame) !important;
+}
+.problem-card .ic, .solution-card .ic, .compare-card .ic, .tilt-card .ic, .why-row .ic, .resource-card .ic {
+    color: #000 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 2.5rem !important;
+}
+.compare-card.old-way { background: #fecdd3 !important; }
+.compare-card.new-way { background: #bbf7d0 !important; }
+.problem { background: #fff !important; }
+.solution { background: #000 !important; color: #fff !important; }
+.solution .section-head h2, .solution .section-head p, .solution .eyebrow { color: #fff !important; }
+.solution-step { background: #111 !important; color: #fff !important; border-color: #fff !important; box-shadow: 8px 8px 0 var(--ion) !important; }
+.solution-step h3, .solution-step p { color: #fff !important; }
+.solution-step .num { color: var(--ion) !important; }
+.email-panel { background: #e0f2fe !important; }
+.email-input { border: 3px solid #000 !important; border-radius: 0 !important; box-shadow: 4px 4px 0 #000 !important; font-family: var(--font-mono) !important; }
+.why-row .label { color: #000 !important; font-weight: 800 !important; }
+.resource-grid .link { color: var(--flame) !important; font-weight: 800 !important; }
+.section-head h2 { font-family: var(--font-display) !important; text-transform: uppercase !important; }
+</style>
 </head>
 <body>
 
@@ -728,7 +764,7 @@
 
 <header id="site-header">
   <div class="container nav-row">
-    <a href="/index.html" class="logo">üöÄ EMO Learners <span>STUDENT OS</span></a>
+    <a href="/index.html" class="logo">?? EMO Learners <span>STUDENT OS</span></a>
     <nav class="primary-nav">
       <a href="/index.html">Home</a>
       <a href="/about.html">About</a>
@@ -738,8 +774,8 @@
     </nav>
     <div class="nav-actions">
       <a href="/login.html" class="btn btn-ghost btn-sm">Login</a>
-      <a href="https://instagram.com/emolearners" target="_blank" rel="noopener" class="btn btn-primary btn-sm">üì∑ Follow</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">‚ò∞</button>
+      <a href="https://instagram.com/emolearners" target="_blank" rel="noopener" class="btn btn-primary btn-sm">?? Follow</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">?</button>
     </div>
   </div>
   <div class="container">
@@ -760,7 +796,7 @@
     <div class="mission-track" id="missionTrack">
       <div class="rail"></div>
       <div class="glow" id="missionGlow"></div>
-      <div class="mission-marker" id="missionMarker">üöÄ</div>
+      <div class="mission-marker" id="missionMarker">??</div>
     </div>
 
     <!-- ===================== HERO ===================== -->
@@ -769,15 +805,15 @@
         <div class="hero-copy" data-reveal>
           <span class="eyebrow" style="color: #000; font-weight: 800; border: 2px solid #000; padding: 0.2rem 0.5rem; background: #e0f2fe; box-shadow: 2px 2px 0 #000;">For students who want more</span>
           <h1 style="margin-top: 1rem;">Stop Wasting Time.<br><span class="accent" style="color: var(--flame); background: none;">Get the Best AI Tools & Resources.</span></h1>
-          <p class="lede" style="color: #000; font-weight: 500;">AI tools, study resources, skill-building, internships, and career guidance ‚Äî all in one place, built for students.</p>
+          <p class="lede" style="color: #000; font-weight: 500;">AI tools, study resources, skill-building, internships, and career guidance ó all in one place, built for students.</p>
           <div class="hero-actions">
-            <a href="https://t.me/emolarners" target="_blank" rel="noopener" class="btn btn-primary">üöÄ Join Telegram</a>
-            <a href="https://www.youtube.com/@emolearners" target="_blank" rel="noopener" class="btn btn-ghost">üì∫ Subscribe YouTube</a>
+            <a href="https://t.me/emolarners" target="_blank" rel="noopener" class="btn btn-primary">?? Join Telegram</a>
+            <a href="https://www.youtube.com/@emolearners" target="_blank" rel="noopener" class="btn btn-ghost">?? Subscribe YouTube</a>
           </div>
           <div class="hero-badges">
-            <span class="badge" style="border: 2px solid #000; border-radius: 0; box-shadow: 2px 2px 0 #000; color: #000; font-weight: 600; background: #bbf7d0;">üöÄ Growing Student Community</span>
-            <span class="badge" style="border: 2px solid #000; border-radius: 0; box-shadow: 2px 2px 0 #000; color: #000; font-weight: 600; background: #fef08a;">ü§ñ AI-Powered Learning</span>
-            <span class="badge" style="border: 2px solid #000; border-radius: 0; box-shadow: 2px 2px 0 #000; color: #000; font-weight: 600; background: #fbcfe8;">üíº Career-Focused Resources</span>
+            <span class="badge" style="border: 2px solid #000; border-radius: 0; box-shadow: 2px 2px 0 #000; color: #000; font-weight: 600; background: #bbf7d0;">?? Growing Student Community</span>
+            <span class="badge" style="border: 2px solid #000; border-radius: 0; box-shadow: 2px 2px 0 #000; color: #000; font-weight: 600; background: #fef08a;">?? AI-Powered Learning</span>
+            <span class="badge" style="border: 2px solid #000; border-radius: 0; box-shadow: 2px 2px 0 #000; color: #000; font-weight: 600; background: #fbcfe8;">?? Career-Focused Resources</span>
           </div>
         </div>
 
@@ -791,18 +827,18 @@
     <section id="announcements" style="background: #000; padding: 6rem 0; color: #fff;">
       <div class="container" data-reveal>
         <div style="border: 4px solid #fff; box-shadow: 12px 12px 0 var(--flame); background: #111; padding: 3rem; text-align: center;">
-          <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; color: #fff; font-family: var(--font-display);">üêç 30 Days Python Challenge is here!</h2>
+          <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; color: #fff; font-family: var(--font-display);">?? 30 Days Python Challenge is here!</h2>
           <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
             Have you been waiting for the right time to start learning Python? This is your sign.<br><br>
-            <span style="color: var(--ion);">üìÖ From 1st July to 30th July</span>, I'll be uploading 1 Python video every single day‚Äîstarting from the absolute basics and progressing to advanced concepts with practical examples.
+            <span style="color: var(--ion);">?? From 1st July to 30th July</span>, I'll be uploading 1 Python video every single dayóstarting from the absolute basics and progressing to advanced concepts with practical examples.
           </p>
           <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-            <div style="background: #fff; color: #000; padding: 1rem 2rem; font-weight: 800; border: 3px solid #000; box-shadow: 4px 4px 0 var(--ion); font-family: var(--font-display); text-transform: uppercase;">üíØ Free to join</div>
+            <div style="background: #fff; color: #000; padding: 1rem 2rem; font-weight: 800; border: 3px solid #000; box-shadow: 4px 4px 0 var(--ion); font-family: var(--font-display); text-transform: uppercase;">?? Free to join</div>
             <div style="background: #fff; color: #000; padding: 1rem 2rem; font-weight: 800; border: 3px solid #000; box-shadow: 4px 4px 0 var(--ion); font-family: var(--font-display); text-transform: uppercase;">Needs consistency</div>
           </div>
           <p style="font-size: 1.1rem; color: #ccc; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
             Whether you're a complete beginner or looking to strengthen your programming skills, this challenge is for you.<br><br>
-            üìå Follow @emolearners, save this reel, and turn on notifications so you don't miss Day 1. Let's learn Python together, one day at a time! üöÄ
+            ?? Follow @emolearners, save this reel, and turn on notifications so you don't miss Day 1. Let's learn Python together, one day at a time! ??
           </p>
           <a href="https://instagram.com/emolearners" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 2.5rem; background: var(--ion); color: #000; border-color: #fff;">Join the Challenge</a>
         </div>
@@ -822,6 +858,274 @@
         </div>
       </div>
     </section>
+    <!-- ===================== PROBLEM ===================== -->
+    <section class="problem" id="problem">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">The noise</span>
+          <h2>Most Students Struggle With</h2>
+          <p>Not because they're not trying. Because no one handed them a map.</p>
+        </div>
+        <div class="problem-grid" data-reveal>
+          <div class="problem-card">
+            <div class="ic">G£Ú</div>
+            <h3>Information Overload</h3>
+            <p>A hundred tabs open, zero clarity on where to start.</p>
+          </div>
+          <div class="problem-card">
+            <div class="ic">G£Ú</div>
+            <h3>No Clear Roadmap</h3>
+            <p>Tutorials everywhere, no path connecting them.</p>
+          </div>
+          <div class="problem-card">
+            <div class="ic">G£Ú</div>
+            <h3>Lack of Skills</h3>
+            <p>Good marks don't always mean job-ready skills.</p>
+          </div>
+          <div class="problem-card">
+            <div class="ic">G£Ú</div>
+            <h3>Missing Opportunities</h3>
+            <p>Internships and events come and go, unseen.</p>
+          </div>
+          <div class="problem-card">
+            <div class="ic">G£Ú</div>
+            <h3>Poor Productivity</h3>
+            <p>Long hours studying, little to show for it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SOLUTION ===================== -->
+    <section class="solution">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">The fix</span>
+          <h2>EMO Learners Helps You</h2>
+          <p>Same chaos, now sorted into a system you can actually follow.</p>
+        </div>
+        <div class="solution-grid" data-reveal>
+          <div class="solution-card">
+            <div class="ic">=ÉÙ‹</div>
+            <h3>Learn Better</h3>
+            <p>Curated resources, no more guesswork.</p>
+          </div>
+          <div class="solution-card">
+            <div class="ic">=ÉÒ˚</div>
+            <h3>Use AI Effectively</h3>
+            <p>The right AI tool for the task, not just the trend.</p>
+          </div>
+          <div class="solution-card">
+            <div class="ic">=É∆+</div>
+            <h3>Build In-Demand Skills</h3>
+            <p>Programming, communication, and more G«ˆ practiced, not just read.</p>
+          </div>
+          <div class="solution-card">
+            <div class="ic">=É∆+</div>
+            <h3>Find Opportunities</h3>
+            <p>Internships, competitions, and events, surfaced for you.</p>
+          </div>
+          <div class="solution-card">
+            <div class="ic">=ÉÙÍ</div>
+            <h3>Grow Your Career</h3>
+            <p>Momentum that turns effort into outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COMPARISON ===================== -->
+    <section id="comparison">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">The difference</span>
+          <h2>What Makes Us Different?</h2>
+          <p>Why students choose EMO Learners over figuring it out alone.</p>
+        </div>
+        <div class="content-panel" data-reveal style="max-width: 800px; margin: 0 auto; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+              <tr style="background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--line);">
+                <th style="padding: 1.5rem; color: var(--muted); font-weight: 600; width: 50%;">Others</th>
+                <th style="padding: 1.5rem; color: var(--ion); font-weight: 700; width: 50%; border-left: 1px solid var(--line);">EMO Learners</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 1.2rem 1.5rem; color: var(--muted);">Random content</td>
+                <td style="padding: 1.2rem 1.5rem; color: var(--text); font-weight: 500; border-left: 1px solid var(--line);">Curated content</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 1.2rem 1.5rem; color: var(--muted);">Generic advice</td>
+                <td style="padding: 1.2rem 1.5rem; color: var(--text); font-weight: 500; border-left: 1px solid var(--line);">Student-focused</td>
+              </tr>
+              <tr>
+                <td style="padding: 1.2rem 1.5rem; color: var(--muted);">Information overload</td>
+                <td style="padding: 1.2rem 1.5rem; color: var(--text); font-weight: 500; border-left: 1px solid var(--line);">Clear roadmap</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+    <section id="features">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">What's inside</span>
+          <h2>Everything you need, in one place</h2>
+          <p>Five panels. One mission control for your student life.</p>
+        </div>
+        <div class="features-grid" data-reveal>
+          <div class="tilt-card">
+            <div class="ic">=ÉÒ˚</div>
+            <h3>AI Tools</h3>
+            <p>Discover the best AI tools for studying and productivity.</p>
+          </div>
+          <div class="tilt-card">
+            <div class="ic">=ÉÙ‹</div>
+            <h3>Learning Resources</h3>
+            <p>Curated study materials and guides, organised by goal.</p>
+          </div>
+          <div class="tilt-card">
+            <div class="ic">=É∆+</div>
+            <h3>Skill Development</h3>
+            <p>Programming, tech, communication, and more.</p>
+          </div>
+          <div class="tilt-card">
+            <div class="ic">=É∆+</div>
+            <h3>Internships &amp; Opportunities</h3>
+            <p>Latest internships, competitions, and events.</p>
+          </div>
+          <div class="tilt-card">
+            <div class="ic">=ÉÙÍ</div>
+            <h3>Career Growth</h3>
+            <p>Resume, LinkedIn, and placement guidance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SCREENSHOTS ===================== -->
+    <section id="screenshots">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">A look inside</span>
+          <h2>See what you're getting</h2>
+          <p>Real resources and tools that actually work, organized perfectly.</p>
+        </div>
+        <div data-reveal style="max-width: 800px; margin: 0 auto;">
+          <div class="tilt-card" style="padding: 1rem;">
+            <img src="resources.png" alt="Curated Resources" style="border-radius: var(--radius-sm); width: 100%; height: auto;">
+            <h3 style="margin-top: 1rem; font-size: 1.1rem; text-align: center;">Curated Resource Vault</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHY CHOOSE ===================== -->
+    <section id="why">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Why EMO Learners</span>
+          <h2>Built for students, on purpose</h2>
+        </div>
+        <div class="why-panel" data-reveal>
+          <div class="why-row"><div class="ic">G£Ù</div><span class="label">Student-focused</span></div>
+          <div class="why-row"><div class="ic">G£Ù</div><span class="label">Practical content</span></div>
+          <div class="why-row"><div class="ic">G£Ù</div><span class="label">AI-powered learning</span></div>
+          <div class="why-row"><div class="ic">G£Ù</div><span class="label">Career-oriented guidance</span></div>
+          <div class="why-row"><div class="ic">G£Ù</div><span class="label">Growing community</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED RESOURCES ===================== -->
+    <section id="resources" class="resources" style="background: #fef08a; padding: 6rem 0; border-top: 4px solid #000; border-bottom: 4px solid #000;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; margin-bottom: 3rem;">
+          <div class="section-head" style="margin-bottom: 0;" data-reveal>
+            <span class="eyebrow" style="color: #000; font-weight: 800; border: 2px solid #000; padding: 0.2rem 0.5rem; background: #fff; box-shadow: 2px 2px 0 #000;">Featured resources</span>
+            <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #000; text-transform: uppercase; line-height: 1.1; margin-top: 1rem;">What you'll actually find inside</h2>
+            <p style="color: #000; font-weight: 600; font-size: 1.1rem; max-width: 500px; margin-top: 1rem;">Live on our Instagram right now G«ˆ a taste of what's coming to the full platform.</p>
+          </div>
+          <div style="border: 3px solid #000; box-shadow: 8px 8px 0 #000; background: #000;" data-reveal>
+            <img src="tools.png" alt="AI Tools Interface" style="width: 100%; height: 250px; object-fit: cover; opacity: 0.9;">
+          </div>
+        </div>
+        <div class="resource-grid" data-reveal>
+          <a class="resource-card" href="https://t.me/emolearners" target="_blank" rel="noopener">
+            <div class="ic">=Éˆ—</div>
+            <h3>Top AI Tools for Students</h3>
+            <p>Hand-picked, tested, no fluff.</p>
+            <span class="link">Join Telegram GÂ∆</span>
+          </a>
+          <a class="resource-card" href="/resources.html">
+            <div class="ic">=ÉÙ‹</div>
+            <h3>Free Study Resources</h3>
+            <p>Notes, guides, and shortcuts that work.</p>
+            <span class="link">View Website GÂ∆</span>
+          </a>
+          <a class="resource-card" href="https://instagram.com/emolearners" target="_blank" rel="noopener">
+            <div class="ic">=É∆+</div>
+            <h3>Internship Opportunities</h3>
+            <p>Fresh listings, posted before they fill up.</p>
+            <span class="link">View on Instagram GÂ∆</span>
+          </a>
+          <a class="resource-card" href="https://instagram.com/emolearners" target="_blank" rel="noopener">
+            <div class="ic">=Éƒª</div>
+            <h3>Placement Roadmaps</h3>
+            <p>Step-by-step paths into the role you want.</p>
+            <span class="link">View on Instagram GÂ∆</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== INSTAGRAM ===================== -->
+    <section id="instagram">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Where we post daily</span>
+          <h2>Follow Us on Instagram</h2>
+          <p>The fastest way to catch new tools, resources, and internships the moment they drop.</p>
+        </div>
+        <div class="why-panel" data-reveal>
+          <div class="why-row"><div class="ic">=ÉÒ˚</div><span class="label">AI Tools</span></div>
+          <div class="why-row"><div class="ic">=ÉÙ•</div><span class="label">Study Tips</span></div>
+          <div class="why-row"><div class="ic">=É∆+</div><span class="label">Internships</span></div>
+          <div class="why-row"><div class="ic">=Éƒª</div><span class="label">Career Advice</span></div>
+        </div>
+        <div style="margin-top:2rem; text-align:center;">
+          <a href="https://instagram.com/emolearners" target="_blank" rel="noopener" class="btn btn-primary">=ÉÙ+ Follow @emolearners</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EMAIL CAPTURE ===================== -->
+    <!-- TODO (Mohit): this form is UI-only. Point it at your Google Form / Tally / ESP action URL before launch G«ˆ see the submit handler in the script tag at the bottom. -->
+    <section id="newsletter">
+      <div class="container">
+        <div class="cta-panel" data-reveal>
+          <h2>Get Weekly AI Tools, Resources &amp; Opportunities</h2>
+          <p>Straight to your inbox. No spam, unsubscribe anytime.</p>
+          <form id="emailForm" class="email-form" style="flex-direction: column; max-width: 400px; margin: 1.8rem auto 0; gap: 1rem;" novalidate>
+            <input type="text" id="nameInput" class="email-input" style="flex: none; width: 100%; max-width: 100%;" placeholder="Your Name" required aria-label="Name">
+            <input type="email" id="emailInput" class="email-input" style="flex: none; width: 100%; max-width: 100%;" placeholder="you@college.edu" required aria-label="Email address">
+            <input type="text" id="collegeInput" class="email-input" style="flex: none; width: 100%; max-width: 100%;" placeholder="College Name" required aria-label="College Name">
+            <div style="display: flex; gap: 1rem; width: 100%;">
+              <input type="text" id="branchInput" class="email-input" style="flex: 1 1 0%; min-width: 0; max-width: 100%;" placeholder="Branch" required aria-label="Branch">
+              <input type="text" id="semInput" class="email-input" style="flex: 1 1 0%; min-width: 0; max-width: 100%;" placeholder="Semester" required aria-label="Semester">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; border-radius: 12px;">Join Free</button>
+          </form>
+          <p class="email-success" id="emailSuccess" role="status">=ÉƒÎ You're on the list G«ˆ keep an eye on your inbox.</p>
+        </div>
+      </div>
+    </section>
+
+    
     <!-- ===================== FOUNDER ===================== -->
     <section id="founder" style="padding: 6rem 0; background: #fff;">
       <div class="container founder-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center;">
@@ -836,7 +1140,7 @@
           <h3 class="founder-greeting" style="font-size: clamp(2.5rem, 4vw, 3.5rem); font-family: var(--font-display); font-weight: 800; text-transform: uppercase; margin: 1rem 0; color: #000; line-height: 1;">Mohit Ahirwar</h3>
           <p class="bio" style="font-size: 1.2rem; font-weight: 600; color: #000; line-height: 1.6;">Building a platform that helps students learn AI, develop real-world skills, and discover career opportunities that actually matter.</p>
           <div style="margin-top:2rem;">
-            <a href="https://mohitahirwarportfolio.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" style="background: #000; color: #fff; font-size: 1.1rem; padding: 1rem 2rem; box-shadow: 4px 4px 0 var(--ion); border-color: #000;">View Portfolio ‚Üí</a>
+            <a href="https://mohitahirwarportfolio.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" style="background: #000; color: #fff; font-size: 1.1rem; padding: 1rem 2rem; box-shadow: 4px 4px 0 var(--ion); border-color: #000;">View Portfolio ?</a>
           </div>
         </div>
       </div>
@@ -849,7 +1153,7 @@
           <h2 style="font-size: clamp(3rem, 6vw, 5rem); font-family: var(--font-display); font-weight: 900; text-transform: uppercase; color: #000; line-height: 1; margin-bottom: 1.5rem; text-shadow: 4px 4px 0 var(--ion);">Ready to Level Up?</h2>
           <p style="font-size: 1.5rem; font-weight: 600; color: #000; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">People join communities, not just pages. Jump in and start learning smarter today.</p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="https://t.me/emolarners" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 1.5rem; padding: 1.5rem 3rem; background: var(--flame); border-color: #000; color: #000; box-shadow: 8px 8px 0 #000;">üöÄ Join 50+ Students Learning Smarter</a>
+            <a href="https://t.me/emolarners" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 1.5rem; padding: 1.5rem 3rem; background: var(--flame); border-color: #000; color: #000; box-shadow: 8px 8px 0 #000;">?? Join 50+ Students Learning Smarter</a>
           </div>
         </div>
       </div>
@@ -863,7 +1167,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo">üöÄ EMO Learners</div>
+        <div class="logo">?? EMO Learners</div>
         <p>Helping students learn smarter, build skills, and grow their careers.</p>
       </div>
       <div class="footer-col">
@@ -885,7 +1189,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>¬© 2026 EMO Learners</span>
+      <span>© 2026 EMO Learners</span>
       <span>Built for students, by students.</span>
     </div>
   </div>
@@ -1046,3 +1350,5 @@
 
 </body>
 </html>
+
+
