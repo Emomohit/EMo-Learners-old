@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EMO Learners — Learn, Build &amp; Succeed</title>
+<title>EMO Learners -> Learn, Build &amp; Succeed</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -722,40 +722,98 @@
   }
 </style>
 <style>
-/* Brutalist Overrides for Restored Sections */
-.problem-card, .solution-step, .solution-card, .compare-card, .tilt-card, .shot-card, .why-panel, .resource-card, .email-panel, .content-panel {
-    background: #fff !important;
-    border: 4px solid #000 !important;
-    box-shadow: 8px 8px 0 #000 !important;
-    border-radius: 0 !important;
+/* ðŸ”´ NYC STYLE OVERRIDES */
+body, html { background: #fff !important; color: #000 !important; }
+* { border-radius: 0 !important; }
+h1, h2, h3, h4, .section-title {
+    font-family: 'Bricolage Grotesque', sans-serif !important;
+    text-transform: uppercase !important;
+    font-weight: 900 !important;
+    letter-spacing: -1px !important;
+    line-height: 1 !important;
     color: #000 !important;
-    transform: none !important;
-    transition: transform 0.2s, box-shadow 0.2s !important;
+    text-shadow: none !important;
 }
-.problem-card:hover, .solution-step:hover, .solution-card:hover, .compare-card:hover, .tilt-card:hover, .shot-card:hover, .resource-card:hover, .email-panel:hover {
-    transform: translate(-2px, -2px) !important;
-    box-shadow: 12px 12px 0 var(--flame) !important;
-}
-.problem-card .ic, .solution-card .ic, .compare-card .ic, .tilt-card .ic, .why-row .ic, .resource-card .ic {
-    color: #000 !important;
-    background: none !important;
+.eyebrow {
+    background: #000 !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+    padding: 0.4rem 1rem !important;
+    display: inline-block !important;
+    margin-bottom: 1.5rem !important;
     border: none !important;
     box-shadow: none !important;
-    font-size: 2.5rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
 }
-.compare-card.old-way { background: #fecdd3 !important; }
-.compare-card.new-way { background: #bbf7d0 !important; }
-.problem { background: #fff !important; }
-.solution { background: #000 !important; color: #fff !important; }
-.solution .section-head h2, .solution .section-head p, .solution .eyebrow { color: #fff !important; }
-.solution-step { background: #111 !important; color: #fff !important; border-color: #fff !important; box-shadow: 8px 8px 0 var(--ion) !important; }
-.solution-step h3, .solution-step p { color: #fff !important; }
-.solution-step .num { color: var(--ion) !important; }
-.email-panel { background: #e0f2fe !important; }
-.email-input { border: 3px solid #000 !important; border-radius: 0 !important; box-shadow: 4px 4px 0 #000 !important; font-family: var(--font-mono) !important; }
-.why-row .label { color: #000 !important; font-weight: 800 !important; }
-.resource-grid .link { color: var(--flame) !important; font-weight: 800 !important; }
-.section-head h2 { font-family: var(--font-display) !important; text-transform: uppercase !important; }
+.btn, .btn-primary, .btn-ghost {
+    border: 2px solid #000 !important;
+    box-shadow: 4px 4px 0px #000 !important;
+    text-transform: uppercase !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px !important;
+    background: #FFDE00 !important;
+    color: #000 !important;
+    padding: 1rem 2rem !important;
+    transform: none !important;
+    transition: transform 0.1s, box-shadow 0.1s !important;
+}
+.btn:hover, .btn-primary:hover, .btn-ghost:hover {
+    transform: translate(2px, 2px) !important;
+    box-shadow: 0px 0px 0px #000 !important;
+}
+header { border-bottom: 2px solid #000 !important; background: #fff !important; }
+.hero { border-bottom: 2px solid #000 !important; background: #fff !important; padding: 120px 0 60px !important; }
+section { border-bottom: 2px solid #000 !important; background: #fff !important; }
+
+/* Grid Cards */
+.problem-card, .solution-step, .solution-card, .compare-card, .tilt-card, .shot-card, .why-panel, .resource-card, .email-panel, .content-panel {
+    background: #fff !important;
+    border: 2px solid #000 !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    transform: none !important;
+    transition: background 0.2s !important;
+}
+.problem-card:hover, .solution-step:hover, .feature-card:hover, .compare-card:hover {
+    background: #FFDE00 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove rotations I added previously */
+[style*="rotate"] { transform: none !important; }
+.founder-card, .founder-copy, .cta-panel { transform: none !important; box-shadow: 8px 8px 0 #000 !important; border: 2px solid #000 !important; }
+
+/* Marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: #FFDE00;
+    border-bottom: 2px solid #000;
+    padding: 10px 0;
+    display: flex;
+    white-space: nowrap;
+}
+.marquee-text {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: #000;
+    animation: marquee 15s linear infinite;
+    display: inline-block;
+    padding-right: 50px;
+}
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* Section Specific Fixes */
+.solution { background: #fff !important; }
+.solution h2, .solution p, .solution-step h3, .solution-step p { color: #000 !important; }
+.solution-step { border: 2px solid #000 !important; background: #fff !important; }
+.solution-step .num { color: #000 !important; }
+#social-proof { background: #fff !important; }
+#social-proof > div { border: 2px solid #000 !important; box-shadow: none !important; background: #fff !important; }
 </style>
 </head>
 <body>
@@ -791,6 +849,11 @@
 </header>
 
 <div class="wrap" id="top">
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee-container">
+      <div class="marquee-text">EMO LEARNERS ðŸš€ LEARN AI ðŸš€ BUILD SKILLS ðŸš€ GET INTERNSHIPS ðŸš€ EMO LEARNERS ðŸš€ LEARN AI ðŸš€ BUILD SKILLS ðŸš€ GET INTERNSHIPS ðŸš€</div>
+      <div class="marquee-text">EMO LEARNERS ðŸš€ LEARN AI ðŸš€ BUILD SKILLS ðŸš€ GET INTERNSHIPS ðŸš€ EMO LEARNERS ðŸš€ LEARN AI ðŸš€ BUILD SKILLS ðŸš€ GET INTERNSHIPS ðŸš€</div>
+    </div>
 
   <div class="mission-rail-wrap" id="missionWrap">
     <div class="mission-track" id="missionTrack">
@@ -805,7 +868,7 @@
         <div class="hero-copy" data-reveal>
           <span class="eyebrow" style="color: #000; font-weight: 800; border: 2px solid #000; padding: 0.2rem 0.5rem; background: #e0f2fe; box-shadow: 2px 2px 0 #000;">For students who want more</span>
           <h1 style="margin-top: 1rem;">Stop Wasting Time.<br><span class="accent" style="color: var(--flame); background: none;">Get the Best AI Tools & Resources.</span></h1>
-          <p class="lede" style="color: #000; font-weight: 500;">AI tools, study resources, skill-building, internships, and career guidance — all in one place, built for students.</p>
+          <p class="lede" style="color: #000; font-weight: 500;">AI tools, study resources, skill-building, internships, and career guidance -> all in one place, built for students.</p>
           <div class="hero-actions">
             <a href="https://t.me/emolarners" target="_blank" rel="noopener" class="btn btn-primary">?? Join Telegram</a>
             <a href="https://www.youtube.com/@emolearners" target="_blank" rel="noopener" class="btn btn-ghost">?? Subscribe YouTube</a>
@@ -830,7 +893,7 @@
           <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; color: #fff; font-family: var(--font-display);">?? 30 Days Python Challenge is here!</h2>
           <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
             Have you been waiting for the right time to start learning Python? This is your sign.<br><br>
-            <span style="color: var(--ion);">?? From 1st July to 30th July</span>, I'll be uploading 1 Python video every single day—starting from the absolute basics and progressing to advanced concepts with practical examples.
+            <span style="color: var(--ion);">?? From 1st July to 30th July</span>, I'll be uploading 1 Python video every single day->starting from the absolute basics and progressing to advanced concepts with practical examples.
           </p>
           <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
             <div style="background: #fff; color: #000; padding: 1rem 2rem; font-weight: 800; border: 3px solid #000; box-shadow: 4px 4px 0 var(--ion); font-family: var(--font-display); text-transform: uppercase;">?? Free to join</div>
@@ -868,27 +931,27 @@
         </div>
         <div class="problem-grid" data-reveal>
           <div class="problem-card">
-            <div class="ic">G£ò</div>
+            <div class="ic">G->-></div>
             <h3>Information Overload</h3>
             <p>A hundred tabs open, zero clarity on where to start.</p>
           </div>
           <div class="problem-card">
-            <div class="ic">G£ò</div>
+            <div class="ic">G->-></div>
             <h3>No Clear Roadmap</h3>
             <p>Tutorials everywhere, no path connecting them.</p>
           </div>
           <div class="problem-card">
-            <div class="ic">G£ò</div>
+            <div class="ic">G->-></div>
             <h3>Lack of Skills</h3>
             <p>Good marks don't always mean job-ready skills.</p>
           </div>
           <div class="problem-card">
-            <div class="ic">G£ò</div>
+            <div class="ic">G->-></div>
             <h3>Missing Opportunities</h3>
             <p>Internships and events come and go, unseen.</p>
           </div>
           <div class="problem-card">
-            <div class="ic">G£ò</div>
+            <div class="ic">G->-></div>
             <h3>Poor Productivity</h3>
             <p>Long hours studying, little to show for it.</p>
           </div>
@@ -906,27 +969,27 @@
         </div>
         <div class="solution-grid" data-reveal>
           <div class="solution-card">
-            <div class="ic">=ƒôÜ</div>
+            <div class="ic">=->->-></div>
             <h3>Learn Better</h3>
             <p>Curated resources, no more guesswork.</p>
           </div>
           <div class="solution-card">
-            <div class="ic">=ƒñû</div>
+            <div class="ic">=->->-></div>
             <h3>Use AI Effectively</h3>
             <p>The right AI tool for the task, not just the trend.</p>
           </div>
           <div class="solution-card">
-            <div class="ic">=ƒÆ+</div>
+            <div class="ic">=->->+</div>
             <h3>Build In-Demand Skills</h3>
-            <p>Programming, communication, and more GÇö practiced, not just read.</p>
+            <p>Programming, communication, and more G->-> practiced, not just read.</p>
           </div>
           <div class="solution-card">
-            <div class="ic">=ƒÆ+</div>
+            <div class="ic">=->->+</div>
             <h3>Find Opportunities</h3>
             <p>Internships, competitions, and events, surfaced for you.</p>
           </div>
           <div class="solution-card">
-            <div class="ic">=ƒôê</div>
+            <div class="ic">=->->-></div>
             <h3>Grow Your Career</h3>
             <p>Momentum that turns effort into outcomes.</p>
           </div>
@@ -979,27 +1042,27 @@
         </div>
         <div class="features-grid" data-reveal>
           <div class="tilt-card">
-            <div class="ic">=ƒñû</div>
+            <div class="ic">=->->-></div>
             <h3>AI Tools</h3>
             <p>Discover the best AI tools for studying and productivity.</p>
           </div>
           <div class="tilt-card">
-            <div class="ic">=ƒôÜ</div>
+            <div class="ic">=->->-></div>
             <h3>Learning Resources</h3>
             <p>Curated study materials and guides, organised by goal.</p>
           </div>
           <div class="tilt-card">
-            <div class="ic">=ƒÆ+</div>
+            <div class="ic">=->->+</div>
             <h3>Skill Development</h3>
             <p>Programming, tech, communication, and more.</p>
           </div>
           <div class="tilt-card">
-            <div class="ic">=ƒÆ+</div>
+            <div class="ic">=->->+</div>
             <h3>Internships &amp; Opportunities</h3>
             <p>Latest internships, competitions, and events.</p>
           </div>
           <div class="tilt-card">
-            <div class="ic">=ƒôê</div>
+            <div class="ic">=->->-></div>
             <h3>Career Growth</h3>
             <p>Resume, LinkedIn, and placement guidance.</p>
           </div>
@@ -1032,11 +1095,11 @@
           <h2>Built for students, on purpose</h2>
         </div>
         <div class="why-panel" data-reveal>
-          <div class="why-row"><div class="ic">G£ô</div><span class="label">Student-focused</span></div>
-          <div class="why-row"><div class="ic">G£ô</div><span class="label">Practical content</span></div>
-          <div class="why-row"><div class="ic">G£ô</div><span class="label">AI-powered learning</span></div>
-          <div class="why-row"><div class="ic">G£ô</div><span class="label">Career-oriented guidance</span></div>
-          <div class="why-row"><div class="ic">G£ô</div><span class="label">Growing community</span></div>
+          <div class="why-row"><div class="ic">G->-></div><span class="label">Student-focused</span></div>
+          <div class="why-row"><div class="ic">G->-></div><span class="label">Practical content</span></div>
+          <div class="why-row"><div class="ic">G->-></div><span class="label">AI-powered learning</span></div>
+          <div class="why-row"><div class="ic">G->-></div><span class="label">Career-oriented guidance</span></div>
+          <div class="why-row"><div class="ic">G->-></div><span class="label">Growing community</span></div>
         </div>
       </div>
     </section>
@@ -1048,7 +1111,7 @@
           <div class="section-head" style="margin-bottom: 0;" data-reveal>
             <span class="eyebrow" style="color: #000; font-weight: 800; border: 2px solid #000; padding: 0.2rem 0.5rem; background: #fff; box-shadow: 2px 2px 0 #000;">Featured resources</span>
             <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #000; text-transform: uppercase; line-height: 1.1; margin-top: 1rem;">What you'll actually find inside</h2>
-            <p style="color: #000; font-weight: 600; font-size: 1.1rem; max-width: 500px; margin-top: 1rem;">Live on our Instagram right now GÇö a taste of what's coming to the full platform.</p>
+            <p style="color: #000; font-weight: 600; font-size: 1.1rem; max-width: 500px; margin-top: 1rem;">Live on our Instagram right now G->-> a taste of what's coming to the full platform.</p>
           </div>
           <div style="border: 3px solid #000; box-shadow: 8px 8px 0 #000; background: #000;" data-reveal>
             <img src="tools.png" alt="AI Tools Interface" style="width: 100%; height: 250px; object-fit: cover; opacity: 0.9;">
@@ -1056,28 +1119,28 @@
         </div>
         <div class="resource-grid" data-reveal>
           <a class="resource-card" href="https://t.me/emolearners" target="_blank" rel="noopener">
-            <div class="ic">=ƒöÑ</div>
+            <div class="ic">=->->-></div>
             <h3>Top AI Tools for Students</h3>
             <p>Hand-picked, tested, no fluff.</p>
-            <span class="link">Join Telegram GåÆ</span>
+            <span class="link">Join Telegram G->-></span>
           </a>
           <a class="resource-card" href="/resources.html">
-            <div class="ic">=ƒôÜ</div>
+            <div class="ic">=->->-></div>
             <h3>Free Study Resources</h3>
             <p>Notes, guides, and shortcuts that work.</p>
-            <span class="link">View Website GåÆ</span>
+            <span class="link">View Website G->-></span>
           </a>
           <a class="resource-card" href="https://instagram.com/emolearners" target="_blank" rel="noopener">
-            <div class="ic">=ƒÆ+</div>
+            <div class="ic">=->->+</div>
             <h3>Internship Opportunities</h3>
             <p>Fresh listings, posted before they fill up.</p>
-            <span class="link">View on Instagram GåÆ</span>
+            <span class="link">View on Instagram G->-></span>
           </a>
           <a class="resource-card" href="https://instagram.com/emolearners" target="_blank" rel="noopener">
-            <div class="ic">=ƒÄ»</div>
+            <div class="ic">=->Ä»</div>
             <h3>Placement Roadmaps</h3>
             <p>Step-by-step paths into the role you want.</p>
-            <span class="link">View on Instagram GåÆ</span>
+            <span class="link">View on Instagram G->-></span>
           </a>
         </div>
       </div>
@@ -1092,19 +1155,19 @@
           <p>The fastest way to catch new tools, resources, and internships the moment they drop.</p>
         </div>
         <div class="why-panel" data-reveal>
-          <div class="why-row"><div class="ic">=ƒñû</div><span class="label">AI Tools</span></div>
-          <div class="why-row"><div class="ic">=ƒô¥</div><span class="label">Study Tips</span></div>
-          <div class="why-row"><div class="ic">=ƒÆ+</div><span class="label">Internships</span></div>
-          <div class="why-row"><div class="ic">=ƒÄ»</div><span class="label">Career Advice</span></div>
+          <div class="why-row"><div class="ic">=->->-></div><span class="label">AI Tools</span></div>
+          <div class="why-row"><div class="ic">=->-></div><span class="label">Study Tips</span></div>
+          <div class="why-row"><div class="ic">=->->+</div><span class="label">Internships</span></div>
+          <div class="why-row"><div class="ic">=->Ä»</div><span class="label">Career Advice</span></div>
         </div>
         <div style="margin-top:2rem; text-align:center;">
-          <a href="https://instagram.com/emolearners" target="_blank" rel="noopener" class="btn btn-primary">=ƒô+ Follow @emolearners</a>
+          <a href="https://instagram.com/emolearners" target="_blank" rel="noopener" class="btn btn-primary">=->->+ Follow @emolearners</a>
         </div>
       </div>
     </section>
 
     <!-- ===================== EMAIL CAPTURE ===================== -->
-    <!-- TODO (Mohit): this form is UI-only. Point it at your Google Form / Tally / ESP action URL before launch GÇö see the submit handler in the script tag at the bottom. -->
+    <!-- TODO (Mohit): this form is UI-only. Point it at your Google Form / Tally / ESP action URL before launch G->-> see the submit handler in the script tag at the bottom. -->
     <section id="newsletter">
       <div class="container">
         <div class="cta-panel" data-reveal>
@@ -1120,7 +1183,7 @@
             </div>
             <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; border-radius: 12px;">Join Free</button>
           </form>
-          <p class="email-success" id="emailSuccess" role="status">=ƒÄë You're on the list GÇö keep an eye on your inbox.</p>
+          <p class="email-success" id="emailSuccess" role="status">=->->-> You're on the list G->-> keep an eye on your inbox.</p>
         </div>
       </div>
     </section>
@@ -1189,7 +1252,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 EMO Learners</span>
+      <span>-> 2026 EMO Learners</span>
       <span>Built for students, by students.</span>
     </div>
   </div>
