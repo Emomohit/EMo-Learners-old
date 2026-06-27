@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    \1\n  <meta name="description" content="Access our curated directory of AI tools, learning roadmaps, and branches for your tech journey.">
+      <meta name="description" content="Access our curated directory of AI tools, learning roadmaps, and branches for your tech journey.">
   
     <style>
         * {
@@ -1295,7 +1295,9 @@
         .emo-reveal { opacity:0;transform:translateY(30px);transition:all 0.7s cubic-bezier(.23,1,.32,1); }
         .emo-reveal.vis { opacity:1;transform:translateY(0); }
 
-    \n    @media(pointer: coarse) { .cursor, .cursor-trail { display: none !important; } }\n  
+    
+    @media(pointer: coarse) { .cursor, .cursor-trail { display: none !important; } }
+  
     /* HAMBURGER MENU & MOBILE RESPONSIVENESS */
     .hamburger { display: none; font-size: 2rem; cursor: pointer; color: var(--orange); user-select: none; z-index: 1001; }
     @media (max-width: 768px) {
@@ -1326,7 +1328,8 @@
                 <div class="search-results" id="searchResults"></div>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" style="color: #ff9a9e; font-weight: 800;">← Main Site</a></li>\n                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a href="index.html" style="color: #ff9a9e; font-weight: 800;">← Main Site</a></li>
+                <li><a onclick="showPage('home')">Home</a></li>
                 <li><a onclick="scrollToSection('features')">Features</a></li>
                 <li><a onclick="scrollToSection('branches')">Branches</a></li>
                 <li><a onclick="scrollToSection('contact-section')">Contact</a></li>
@@ -2397,16 +2400,46 @@
 
         function showResource(semester, type) {
             const messages = {
-                'Notes': `📚 ${semester} ${type} are available in our Telegram group!\n\nJoin now to get:\n✅ Complete chapter-wise notes\n✅ Handwritten notes\n✅ PPT presentations\n✅ Reference books\n✅ Video lecture links`,
-                'Papers': `📝 ${semester} Question ${type} collection!\n\nAvailable in Telegram:\n✅ Last 5 years papers\n✅ Sample papers\n✅ Model papers\n✅ Solutions with explanations\n✅ University papers`,
-                'Important': `🎯 ${semester} ${type} Questions!\n\nGet from Telegram:\n✅ High weightage topics\n✅ Must-know concepts\n✅ Formula sheets\n✅ Quick revision notes\n✅ Short tricks & tips`,
-                'Syllabus': `📖 ${semester} Complete Syllabus!\n\nDownload from Telegram:\n✅ Official syllabus PDF\n✅ Topic-wise breakdown\n✅ Learning outcomes\n✅ Recommended books\n✅ Reference materials`
+                'Notes': `📚 ${semester} ${type} are available in our Telegram group!
+
+Join now to get:
+✅ Complete chapter-wise notes
+✅ Handwritten notes
+✅ PPT presentations
+✅ Reference books
+✅ Video lecture links`,
+                'Papers': `📝 ${semester} Question ${type} collection!
+
+Available in Telegram:
+✅ Last 5 years papers
+✅ Sample papers
+✅ Model papers
+✅ Solutions with explanations
+✅ University papers`,
+                'Important': `🎯 ${semester} ${type} Questions!
+
+Get from Telegram:
+✅ High weightage topics
+✅ Must-know concepts
+✅ Formula sheets
+✅ Quick revision notes
+✅ Short tricks & tips`,
+                'Syllabus': `📖 ${semester} Complete Syllabus!
+
+Download from Telegram:
+✅ Official syllabus PDF
+✅ Topic-wise breakdown
+✅ Learning outcomes
+✅ Recommended books
+✅ Reference materials`
             };
 
             showSuccessMessage(`🔥 Loading ${semester} ${type}...`);
             
             setTimeout(() => {
-                if (confirm(messages[type] + '\n\nWould you like to join our Telegram group now?')) {
+                if (confirm(messages[type] + '
+
+Would you like to join our Telegram group now?')) {
                     joinTelegram();
                 }
             }, 1000);
@@ -2586,5 +2619,6 @@
       }
     });
   </script>
-\n</body>
+
+</body>
 </html>
