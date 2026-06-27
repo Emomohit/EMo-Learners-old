@@ -2377,20 +2377,11 @@
         }
 
         function showResource(semester, type) {
-            const messages = {
-                'Notes': `📚 ${semester} ${type} are available in our Telegram group!\n\nJoin now to get:\n✅ Complete chapter-wise notes\n✅ Handwritten notes\n✅ PPT presentations\n✅ Reference books\n✅ Video lecture links`,
-                'Papers': `📝 ${semester} Question ${type} collection!\n\nAvailable in Telegram:\n✅ Last 5 years papers\n✅ Sample papers\n✅ Model papers\n✅ Solutions with explanations\n✅ University papers`,
-                'Important': `🎯 ${semester} ${type} Questions!\n\nGet from Telegram:\n✅ High weightage topics\n✅ Must-know concepts\n✅ Formula sheets\n✅ Quick revision notes\n✅ Short tricks & tips`,
-                'Syllabus': `📖 ${semester} Complete Syllabus!\n\nDownload from Telegram:\n✅ Official syllabus PDF\n✅ Topic-wise breakdown\n✅ Learning outcomes\n✅ Recommended books\n✅ Reference materials`
-            };
-
-            showSuccessMessage(`🔥 Loading ${semester} ${type}...`);
+            showSuccessMessage(`🔥 Loading ${semester} ${type}... Redirecting to Telegram...`);
             
             setTimeout(() => {
-                if (confirm(messages[type] + '\n\nWould you like to join our Telegram group now?')) {
-                    joinTelegram();
-                }
-            }, 1000);
+                joinTelegram();
+            }, 1500);
         }
 
         function joinTelegram() {
@@ -2401,10 +2392,10 @@
         }
 
         function contactCreator() {
-            showSuccessMessage('📧 Opening contact options...');
+            showSuccessMessage('📱 Redirecting to Contact...');
             setTimeout(() => {
-                alert('📞 Contact EMO Learners:\n\n✉️ Email: hello.emolearners@gmail.com\n✈️ Telegram: t.me/emolarners\n🌐 Website: emolearners.com\n📷 Instagram: @emolearners');
-            }, 500);
+                window.open('https://t.me/Emomohit', '_blank');
+            }, 1000);
         }
 
         function showSuccessMessage(message) {
