@@ -3,157 +3,301 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - EMO Learners</title>
+  <title>About — EMO Learners</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚀%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Importing Anton for NYC Massive Headings and Poppins for Body -->
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --nyc-blue: #121212; /* Switched to Dark for better contrast with Orange */
-      --nyc-yellow: #FF4500; /* Electric Orange */
-      --nyc-font-head: 'Bricolage Grotesque', sans-serif;
-      --nyc-font-body: 'Outfit', sans-serif;
-      --nyc-border: 2px solid #000;
-      --emo-shadow: 6px 6px 0px #000;
+      --black: #080808;
+      --orange: #FF4500;
+      --green: #00FF88;
+      --white: #f5f5f0;
+      --grey: #1a1a1a;
+      --card-border: 1px solid rgba(255,255,255,0.08);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
-    body {
-      font-family: var(--nyc-font-body);
-      background: #fff;
-      color: #000;
-      overflow-x: hidden;
-      line-height: 1.5;
-    }
-    /* Typography */
-    h1, h2, h3, h4 {
-      font-family: var(--nyc-font-head);
-      text-transform: uppercase;
-      font-weight: 400; /* Anton is naturally heavy */
-      line-height: 1;
-      letter-spacing: 1px;
-    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; line-height: 1; letter-spacing: -1px; }
     a { text-decoration: none; color: inherit; }
-    
-    /* Marquee */
-    .marquee {
-      background: var(--nyc-yellow);
-      border-bottom: var(--nyc-border);
-      padding: 0.5rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-      display: flex;
-    }
-    .marquee-text {
-      font-family: var(--nyc-font-head);
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      animation: scroll 15s linear infinite;
-      padding-right: 50px;
-    }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-    
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: var(--nyc-border);
-      background: #fff;
-    }
-    .logo {
-      font-family: var(--nyc-font-head);
-      font-size: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    nav { display: flex; gap: 2rem; }
-    nav a {
-      font-weight: 600;
-      font-size: 1.1rem;
-      -webkit-text-stroke: 0.5px #000;
-      color: transparent;
-      transition: color 0.2s;
-    }
-    nav a:hover, nav a.active { color: #000; }
-    
-    .nav-actions { display: flex; gap: 1rem; align-items: center; }
-    .btn {
-      font-family: var(--nyc-font-head);
-      font-size: 1.2rem;
-      padding: 0.5rem 1.5rem;
-      border: var(--nyc-border);
-      cursor: pointer;
-      text-transform: uppercase;
-      background: var(--nyc-yellow);
-      transition: transform 0.1s;
-      letter-spacing: 1px;
-    }
-    .btn:hover { transform: translate(2px, 2px); }
-    .btn-primary { background: var(--nyc-blue); color: #fff; }
-    .btn-dark { background: #000; color: #fff; }
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--black); } ::-webkit-scrollbar-thumb { background: var(--orange); }
 
-    /* Layout Containers */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
+    /* CURSOR */
+    .cursor { position:fixed; width:12px; height:12px; background:var(--orange); border-radius:50%; pointer-events:none; z-index:9999; mix-blend-mode:difference; }
+    .cursor-trail { position:fixed; width:40px; height:40px; border:1px solid var(--orange); border-radius:50%; pointer-events:none; z-index:9998; transition:all 0.15s ease; }
+
+    /* NOISE */
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity:0.03; pointer-events:none; z-index:1000; }
+
+    /* TICKER */
+    .ticker { background:var(--orange); padding:0.6rem 0; overflow:hidden; white-space:nowrap; display:flex; border-bottom:1px solid rgba(0,0,0,0.2); }
+    .ticker-track { display:flex; animation:ticker 18s linear infinite; font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#000; }
+    .ticker-item { padding:0 2rem; }
+    @keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+    /* HEADER */
+    header { position:sticky; top:0; z-index:500; display:flex; justify-content:space-between; align-items:center; padding:1.2rem 3rem; background:rgba(8,8,8,0.85); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.06); }
+    .logo { font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; display:flex; align-items:center; gap:0.5rem; }
+    .logo span { color:var(--orange); }
+    nav { display:flex; gap:2.5rem; }
+    nav a { font-size:0.9rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.5); transition:color 0.2s; }
+    nav a:hover, nav a.active { color:var(--white); }
+    .nav-cta { background:var(--orange); color:#000; padding:0.6rem 1.5rem; font-family:'Syne',sans-serif; font-weight:700; font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; border-radius:4px; transition:all 0.2s; }
+    .nav-cta:hover { background:#ff6633; transform:translateY(-1px); }
+    @media(max-width:768px){ nav{display:none;} header{padding:1rem 1.5rem;} }
+
+    /* HERO */
+    .about-hero {
+      position:relative; padding:8rem 3rem 6rem; overflow:hidden;
+      border-bottom:1px solid rgba(255,255,255,0.06);
     }
+    .about-hero::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse 60% 70% at 70% 50%, rgba(255,69,0,0.08) 0%, transparent 70%);
+    }
+    .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size:80px 80px; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
+    .about-hero-inner { position:relative; z-index:2; max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
     
-    
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
-    .about-img { width: 100%; border: var(--nyc-border); object-fit: cover; aspect-ratio: 1; }
-    .about-text h1 { font-size: 5rem; margin-bottom: 1rem; }
-    .about-text p { font-size: 1.2rem; margin-bottom: 2rem; color: #333; }
-    @media(max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
-    
+    .section-tag { display:inline-block; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:var(--orange); margin-bottom:1rem; }
+    .hero-heading { font-size:clamp(3.5rem,7vw,7rem); font-weight:800; text-transform:uppercase; line-height:1.05; margin-bottom:1.5rem; }
+    .hero-heading .highlight { background:linear-gradient(135deg,var(--orange),#ff8c00); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero-desc { color:rgba(255,255,255,0.5); font-size:1.1rem; line-height:1.7; margin-bottom:2.5rem; }
+    .social-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+    .btn-primary { background:var(--orange); color:#000; padding:0.9rem 2rem; border-radius:6px; font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; text-transform:uppercase; letter-spacing:1px; transition:all 0.2s; display:inline-block; }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(255,69,0,0.4); }
+    .btn-ghost { border:1px solid rgba(255,255,255,0.15); color:var(--white); padding:0.9rem 2rem; border-radius:6px; font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; text-transform:uppercase; letter-spacing:1px; transition:all 0.2s; display:inline-block; background:rgba(255,255,255,0.04); }
+    .btn-ghost:hover { background:rgba(255,255,255,0.08); transform:translateY(-2px); }
+
+    /* FOUNDER CARD */
+    .founder-card {
+      position:relative; border-radius:20px; overflow:hidden;
+      border:1px solid rgba(255,69,0,0.2);
+      background:linear-gradient(135deg,#1a0a00,#0d0d0d);
+    }
+    .founder-img-wrap {
+      aspect-ratio:4/5; background:linear-gradient(135deg,#1a0a00,#2d1100);
+      display:flex; align-items:center; justify-content:center;
+      font-size:8rem; position:relative; overflow:hidden;
+    }
+    .founder-img-wrap::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 30%, rgba(255,69,0,0.15), transparent 70%); }
+    .founder-img-wrap img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .founder-meta { padding:1.5rem; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.06); }
+    .founder-name { font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; text-transform:uppercase; }
+    .founder-role { font-size:0.8rem; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:1px; margin-top:0.2rem; }
+    .founder-badge { background:var(--orange); color:#000; padding:0.3rem 0.8rem; border-radius:100px; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+
+    /* STORY SECTION */
+    .story-section { padding:8rem 3rem; max-width:1200px; margin:0 auto; }
+    .story-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
+    .story-block { padding:2.5rem; border-radius:16px; background:var(--grey); border:1px solid rgba(255,255,255,0.07); transition:transform 0.2s, border-color 0.2s; }
+    .story-block:hover { transform:translateY(-4px); border-color:rgba(255,69,0,0.25); }
+    .story-icon { font-size:2rem; margin-bottom:1rem; display:block; }
+    .story-block h3 { font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; text-transform:uppercase; margin-bottom:0.8rem; }
+    .story-block p { color:rgba(255,255,255,0.5); font-size:0.95rem; line-height:1.7; }
+
+    /* MISSION */
+    .mission-section {
+      padding:8rem 3rem; text-align:center;
+      background:linear-gradient(135deg,#0d0500,#080808,#000d05);
+      border-top:1px solid rgba(255,255,255,0.05);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      position:relative; overflow:hidden;
+    }
+    .mission-section::before { content:''; position:absolute; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(255,69,0,0.07),transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); }
+    .mission-section h2 { font-size:clamp(3rem,7vw,7rem); font-weight:800; text-transform:uppercase; position:relative; z-index:2; margin-bottom:2rem; line-height:1.05; }
+    .mission-section h2 em { font-style:normal; color:var(--orange); }
+    .mission-section p { position:relative; z-index:2; color:rgba(255,255,255,0.5); font-size:1.2rem; max-width:700px; margin:0 auto; line-height:1.7; }
+
+    /* VALUES */
+    .values-section { padding:8rem 3rem; }
+    .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:1200px; margin:3rem auto 0; }
+    .value-card { padding:2.5rem; border-radius:16px; background:var(--grey); border:1px solid rgba(255,255,255,0.07); text-align:center; transition:all 0.2s; }
+    .value-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.4); border-color:rgba(255,69,0,0.2); }
+    .value-icon { font-size:2.5rem; margin-bottom:1rem; display:block; }
+    .value-card h3 { font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800; text-transform:uppercase; margin-bottom:0.5rem; color:var(--orange); }
+    .value-card p { color:rgba(255,255,255,0.45); font-size:0.9rem; line-height:1.6; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* FOOTER MINI */
+    footer { background:#030303; border-top:1px solid rgba(255,255,255,0.06); padding:3rem; text-align:center; color:rgba(255,255,255,0.25); font-size:0.85rem; }
+
+    @media(max-width:900px){
+      .about-hero-inner,.story-grid { grid-template-columns:1fr; gap:3rem; }
+      .values-grid { grid-template-columns:1fr 1fr; }
+      .about-hero { padding:6rem 1.5rem 4rem; }
+      .story-section,.values-section,.mission-section { padding:5rem 1.5rem; }
+    }
+    @media(max-width:600px){ .values-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
 
-  <!-- Marquee -->
-  <div class="marquee">
-    <div class="marquee-text">EMO LEARNERS 🚀 LEARN AI 🚀 BUILD SKILLS 🚀 GET INTERNSHIPS 🚀 EMO LEARNERS 🚀 LEARN AI 🚀 BUILD SKILLS 🚀 GET INTERNSHIPS 🚀</div>
-    <div class="marquee-text">EMO LEARNERS 🚀 LEARN AI 🚀 BUILD SKILLS 🚀 GET INTERNSHIPS 🚀 EMO LEARNERS 🚀 LEARN AI 🚀 BUILD SKILLS 🚀 GET INTERNSHIPS 🚀</div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Ticker -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">🚀 EMO Learners</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Built for Students</span><span class="ticker-item">·</span>
+      <span class="ticker-item">100% Free</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Just Getting Started</span><span class="ticker-item">·</span>
+      <span class="ticker-item">🐍 30 Day Python Challenge</span><span class="ticker-item">·</span>
+      <span class="ticker-item">🚀 EMO Learners</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Built for Students</span><span class="ticker-item">·</span>
+      <span class="ticker-item">100% Free</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Just Getting Started</span><span class="ticker-item">·</span>
+      <span class="ticker-item">🐍 30 Day Python Challenge</span><span class="ticker-item">·</span>
+    </div>
   </div>
 
   <!-- Header -->
   <header>
-    <a href="/index.html" class="logo">🚀 EMO Learners</a>
+    <a href="index.html" class="logo">🚀 EMO <span>Learners</span></a>
     <nav>
-      <a href="/index.html">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/resources.html">Resources</a>
-      <a href="/internships.html">Internships</a>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="resources.html">Resources</a>
+      <a href="internships.html">Internships</a>
     </nav>
-    <div class="nav-actions">
-      
-    </div>
+    <a href="join.html" class="nav-cta">Join Free →</a>
   </header>
 
-  
-  <main class="container">
-    <div class="about-grid">
-      <div class="about-text">
-        <h1>ABOUT THE FOUNDER</h1>
-        <h2 style="color: var(--nyc-blue); margin-bottom: 1rem;">MOHIT AHIRWAR</h2>
-        <p>Founder of EMO Learners. Building a platform that helps students learn AI, develop skills, and discover career opportunities.</p>
-        <p>We believe in building real momentum, not just studying for exams. Join the community and start building.</p>
-        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-          <a href="https://instagram.com/emolearners" target="_blank" class="btn">Instagram</a>
-          <a href="https://t.me/emolarners" target="_blank" class="btn btn-primary">Telegram</a>
-          <a href="#" target="_blank" class="btn" style="background: #00FF66; color: #000;">View Portfolio 🚀</a>
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="hero-grid"></div>
+    <div class="about-hero-inner">
+      <div>
+        <span class="section-tag">// The Founder</span>
+        <h1 class="hero-heading">
+          Meet <span class="highlight">Mohit</span><br>Ahirwar.
+        </h1>
+        <p class="hero-desc">
+          A student who got tired of outdated syllabi, tutorial hell, and watching peers struggle to break into tech. So he decided to build the platform he wished he had — open, practical, and built for Indian students who want more than a degree.
+        </p>
+        <div class="social-btns">
+          <a href="https://instagram.com/emolearners" target="_blank" class="btn-primary">Instagram →</a>
+          <a href="https://t.me/emolarners" target="_blank" class="btn-ghost">Telegram Community</a>
+          <a href="https://www.linkedin.com/in/mohit-ahirwar-12bb58386/" target="_blank" class="btn-ghost">LinkedIn</a>
         </div>
       </div>
       <div>
-        <img src="founder.jpg" alt="Mohit Ahirwar" class="about-img">
+        <div class="founder-card">
+          <div class="founder-img-wrap">
+            🧑‍💻
+            <img src="founder.jpg" alt="Mohit Ahirwar" onerror="this.style.display='none'">
+          </div>
+          <div class="founder-meta">
+            <div>
+              <div class="founder-name">Mohit Ahirwar</div>
+              <div class="founder-role">Founder, EMO Learners</div>
+            </div>
+            <div class="founder-badge">🚀 Builder</div>
+          </div>
+        </div>
       </div>
     </div>
-  </main>
-    
+  </section>
 
+  <!-- STORY -->
+  <section class="story-section">
+    <div style="max-width:1200px; margin:0 auto;">
+      <span class="section-tag reveal">// The Story</span>
+      <h2 style="font-size:clamp(2.5rem,5vw,4.5rem); font-weight:800; text-transform:uppercase; margin-bottom:1rem;" class="reveal">Why EMO Learners<br>exists.</h2>
+      <p style="color:rgba(255,255,255,0.45); font-size:1.1rem; max-width:600px; line-height:1.7; margin-bottom:4rem;" class="reveal">It started with a simple frustration: Indian students are smart, driven, and hungry to grow — but the resources available to them are either outdated, overpriced, or buried under an avalanche of noise.</p>
+      <div class="story-grid reveal">
+        <div class="story-block">
+          <span class="story-icon">💡</span>
+          <h3>The Idea</h3>
+          <p>What if there was one place that cut through the noise? No overpriced bootcamps. No 100-hour courses that teach nothing. Just clear roadmaps, real tools, and a community that pushes you forward.</p>
+        </div>
+        <div class="story-block">
+          <span class="story-icon">🏗️</span>
+          <h3>The Build</h3>
+          <p>EMO Learners is brand new — and that's exactly the point. We're building this in public, with the community, from the ground up. No fake numbers, no inflated claims. Just real work, starting now.</p>
+        </div>
+        <div class="story-block">
+          <span class="story-icon">🐍</span>
+          <h3>The First Challenge</h3>
+          <p>The 30 Days Python Challenge launches July 1st. One video every day, starting from zero. It's the first of many structured learning experiences we're building — completely free.</p>
+        </div>
+        <div class="story-block">
+          <span class="story-icon">🎯</span>
+          <h3>The Goal</h3>
+          <p>To make EMO Learners the #1 platform for Indian students who want to build real tech skills, get internships, and launch their careers — without spending a single rupee.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission-section">
+    <div class="reveal">
+      <span class="section-tag">// Our Mission</span>
+      <h2>Make tech education<br><em>actually work</em><br>for Indian students.</h2>
+      <p style="margin-top:2rem;">No gatekeeping. No paywalls. No fluff. Just clear paths, honest content, and a real community of builders — from day one.</p>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-section">
+    <div style="max-width:1200px; margin:0 auto; text-align:center;">
+      <span class="section-tag">// What We Stand For</span>
+      <h2 style="font-size:clamp(2.5rem,5vw,4rem); font-weight:800; text-transform:uppercase;" class="reveal">Our values.</h2>
+      <div class="values-grid reveal">
+        <div class="value-card">
+          <span class="value-icon">🔓</span>
+          <h3>Open Access</h3>
+          <p>Everything we build is free. Education shouldn't be locked behind money.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🛠️</span>
+          <h3>Practical First</h3>
+          <p>We teach what gets you hired: real tools, real projects, real skills.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🧭</span>
+          <h3>No Noise</h3>
+          <p>Clear roadmaps. Zero fluff. We respect your time.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🤝</span>
+          <h3>Community Over Competition</h3>
+          <p>We grow faster when we grow together. The community is the product.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">📣</span>
+          <h3>Honest Always</h3>
+          <p>We're new. We'll tell you that. No fake numbers, no manufactured hype.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🚀</span>
+          <h3>Builder Mindset</h3>
+          <p>We don't just teach you to study. We teach you to ship things.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="margin-bottom:1rem; font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:rgba(255,255,255,0.3);">🚀 EMO Learners</div>
+    © 2026 EMO Learners · Built for students, by students. 🇮🇳
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const trail = document.getElementById('cursorTrail');
+    let mx=0,my=0,tx=0,ty=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx-6+'px';cursor.style.top=my-6+'px';});
+    function animTrail(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx-20+'px';trail.style.top=ty-20+'px';requestAnimationFrame(animTrail);}
+    animTrail();
+    const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);observer.unobserve(e.target);}});},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>

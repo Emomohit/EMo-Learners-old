@@ -3,386 +3,1014 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EMO Learners - Build Momentum</title>
+  <title>EMO Learners — Build Momentum</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚀%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --nyc-blue: #121212; /* Switched to Dark for better contrast with Orange */
-      --nyc-yellow: #FF4500; /* Electric Orange */
-      --nyc-font-head: 'Bricolage Grotesque', sans-serif;
-      --nyc-font-body: 'Outfit', sans-serif;
-      --nyc-border: 2px solid #000;
-      --emo-shadow: 6px 6px 0px #000;
+      --black: #080808;
+      --orange: #FF4500;
+      --orange-glow: rgba(255,69,0,0.35);
+      --green: #00FF88;
+      --white: #f5f5f0;
+      --grey: #1a1a1a;
+      --mid-grey: #2a2a2a;
+      --card-border: 1px solid rgba(255,255,255,0.08);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: var(--nyc-font-body);
-      background: #fff;
-      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--black);
+      color: var(--white);
       overflow-x: hidden;
-      line-height: 1.5;
     }
-    h1, h2, h3, h4, .anton { font-family: var(--nyc-font-head); text-transform: uppercase; font-weight: 400; line-height: 1; letter-spacing: 1px; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; line-height: 1; letter-spacing: -1px; }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
 
-    /* Marquee */
-    .marquee { background: var(--nyc-yellow); border-bottom: var(--nyc-border); padding: 0.5rem 0; overflow: hidden; white-space: nowrap; display: flex; }
-    .marquee-text { font-family: var(--nyc-font-head); font-size: 1.5rem; letter-spacing: 2px; animation: scroll 15s linear infinite; padding-right: 50px; }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+    /* ─── CUSTOM CURSOR ─── */
+    .cursor {
+      position: fixed; width: 12px; height: 12px; background: var(--orange);
+      border-radius: 50%; pointer-events: none; z-index: 9999;
+      transition: transform 0.1s; mix-blend-mode: difference;
+    }
+    .cursor-trail {
+      position: fixed; width: 40px; height: 40px;
+      border: 1px solid var(--orange); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transition: all 0.15s ease;
+    }
 
-    /* Header */
-    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: var(--nyc-border); background: #fff; }
-    .logo { font-family: var(--nyc-font-head); font-size: 2rem; display: flex; align-items: center; gap: 0.5rem; }
-    nav { display: flex; gap: 2rem; }
-    nav a { font-weight: 600; font-size: 1.1rem; -webkit-text-stroke: 0.5px #000; color: transparent; transition: color 0.2s; }
-    nav a:hover, nav a.active { color: #000; }
-    .nav-actions { display: flex; gap: 1rem; align-items: center; }
-    
-    .btn { font-family: var(--nyc-font-head); font-size: 1.2rem; padding: 0.5rem 1.5rem; border: var(--nyc-border); cursor: pointer; text-transform: uppercase; background: var(--nyc-yellow); transition: transform 0.1s; letter-spacing: 1px; display: inline-block; text-align: center; }
-    .btn:hover { transform: translate(2px, 2px); }
-    .btn-primary { background: var(--nyc-blue); color: #fff; }
-    .btn-dark { background: #000; color: #fff; }
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03; pointer-events: none; z-index: 1000;
+    }
 
-    .container { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
+    /* ─── TICKER ─── */
+    .ticker {
+      background: var(--orange); padding: 0.6rem 0;
+      overflow: hidden; white-space: nowrap; display: flex;
+      border-bottom: 2px solid rgba(255,255,255,0.15);
+    }
+    .ticker-track {
+      display: flex; animation: ticker 18s linear infinite;
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px; color: #000;
+    }
+    .ticker-item { padding: 0 2rem; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* Hero Section */
-    .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; border-bottom: var(--nyc-border); padding: 6rem 2rem; }
-    .hero-text h1 { font-size: clamp(4rem, 8vw, 8rem); margin-bottom: 2rem; color: #000; letter-spacing: 0; }
-    .hero-text h1 span { color: var(--nyc-blue); }
-    .hero-text p { font-size: 1.2rem; font-weight: 500; margin-bottom: 2rem; max-width: 600px; }
-    .hero-image { position: relative; border: var(--nyc-border); }
-    .hero-image img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
-    .badge { position: absolute; top: -15px; right: -15px; background: var(--nyc-yellow); padding: 0.5rem 1rem; border: var(--nyc-border); font-family: var(--nyc-font-head); font-size: 1.5rem; transform: rotate(5deg); }
+    /* ─── HEADER ─── */
+    header {
+      position: sticky; top: 0; z-index: 500;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .logo {
+      font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .logo span { color: var(--orange); }
+    nav { display: flex; gap: 2.5rem; }
+    nav a {
+      font-size: 0.9rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--white); }
+    .nav-cta {
+      background: var(--orange); color: #000;
+      padding: 0.6rem 1.5rem;
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+      border-radius: 4px; transition: all 0.2s;
+    }
+    .nav-cta:hover { background: #ff6633; transform: translateY(-1px); }
 
-    /* Python Challenge Banner */
-    .challenge-banner { background: var(--nyc-blue); border-bottom: var(--nyc-border); padding: 4rem 2rem; color: #fff; text-align: center; }
-    .challenge-banner h2 { font-size: 5rem; margin-bottom: 1rem; }
-    .challenge-banner .eyebrow { background: var(--nyc-yellow); color: #000; padding: 0.5rem 1rem; font-family: var(--nyc-font-head); font-size: 1.5rem; display: inline-block; margin-bottom: 2rem; border: var(--nyc-border); }
-    .challenge-banner p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; font-weight: 500; }
-    .challenge-banner .btn { font-size: 1.5rem; padding: 1rem 3rem; background: #fff; color: #000; }
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; padding: 8rem 3rem 5rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,69,0,0.12) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 50% at 80% 50%, rgba(0,255,136,0.04) 0%, transparent 60%);
+    }
+    /* Grid lines */
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 1100px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,69,0,0.12); border: 1px solid rgba(255,69,0,0.3);
+      color: var(--orange); padding: 0.4rem 1.2rem;
+      border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2.5rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; transform: scale(1); } 50% { opacity:0.5; transform: scale(0.8); } }
+    .hero h1 {
+      font-size: clamp(4.5rem, 10vw, 10rem); font-weight: 800;
+      margin-bottom: 2rem; text-transform: uppercase;
+    }
+    .hero h1 .line { display: block; }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--orange), #ff8c00);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero h1 .outline-text {
+      -webkit-text-stroke: 2px rgba(255,255,255,0.15);
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.2rem; color: rgba(255,255,255,0.55); font-weight: 500;
+      max-width: 600px; margin: 0 auto 3rem; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: #000;
+      padding: 1rem 2.5rem; border-radius: 6px;
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;
+      transition: all 0.2s; display: inline-block; position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2));
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,69,0,0.4); }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.2); color: var(--white);
+      padding: 1rem 2.5rem; border-radius: 6px;
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;
+      transition: all 0.2s; display: inline-block;
+      background: rgba(255,255,255,0.04);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.35); transform: translateY(-2px); }
 
-    /* Bento Grid */
-    .bento-section { padding: 6rem 2rem; border-bottom: var(--nyc-border); background: #fafafa; }
-    .bento-header { text-align: center; margin-bottom: 4rem; }
-    .bento-header h2 { font-size: 5rem; }
-    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
-    .bento-card { background: #fff; border: var(--nyc-border); box-shadow: var(--emo-shadow); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; }
-    .bento-card.blue { background: var(--nyc-blue); color: #fff; }
-    .bento-card.yellow { background: var(--nyc-yellow); }
-    .bento-card h3 { font-size: 3rem; margin-bottom: 1rem; }
-    .bento-card p { font-size: 1.1rem; font-weight: 500; margin-bottom: 2rem; }
-    .bento-card .icon { font-size: 4rem; margin-bottom: 1rem; }
+    /* ─── HERO STATS ─── */
+    .hero-stats {
+      display: flex; justify-content: center; gap: 4rem;
+      margin-top: 5rem; padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800;
+      color: var(--orange); display: block;
+    }
+    .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.3rem; }
 
-    /* Social Links Section */
-    .social-links { padding: 4rem 2rem; display: flex; justify-content: center; gap: 2rem; background: #fff; }
+    /* ─── FLOATING 3D CARDS ─── */
+    .floating-section {
+      padding: 8rem 3rem; position: relative; overflow: hidden;
+    }
+    .floating-section::before {
+      content: ''; position: absolute;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,69,0,0.06), transparent 70%);
+      top: -200px; right: -200px; pointer-events: none;
+    }
+    .section-tag {
+      display: inline-block; font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 3px; color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800;
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .section-sub { color: rgba(255,255,255,0.45); font-size: 1.1rem; font-weight: 500; max-width: 500px; margin-bottom: 4rem; line-height: 1.6; }
 
-    @media(max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding: 4rem 2rem; }
-      .bento-grid { grid-template-columns: 1fr; }
+    /* 3D Card Grid */
+    .card-grid-3d { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .card-3d {
+      position: relative; border-radius: 16px; padding: 2.5rem;
+      background: var(--grey); border: var(--card-border);
+      transition: transform 0.15s ease-out, box-shadow 0.15s;
+      transform-style: preserve-3d; cursor: default;
+      overflow: hidden;
+    }
+    .card-3d::before {
+      content: ''; position: absolute; inset: 0; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .card-3d:hover { box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,69,0,0.2); }
+    .card-3d.accent { background: linear-gradient(135deg, #1a0a00, #2d1100); border-color: rgba(255,69,0,0.25); }
+    .card-3d.green-accent { background: linear-gradient(135deg, #001a0d, #002d1a); border-color: rgba(0,255,136,0.2); }
+    .card-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+    .card-3d h3 { font-size: 1.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .card-3d p { color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--orange); transition: gap 0.2s;
+    }
+    .card-link:hover { gap: 0.7rem; }
+    .card-num {
+      position: absolute; top: 1.5rem; right: 2rem;
+      font-family: 'Syne', sans-serif; font-size: 5rem; font-weight: 800;
+      color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none;
+    }
+    /* Shine effect */
+    .card-shine {
+      position: absolute; inset: 0; border-radius: 16px;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06), transparent 60%);
+      pointer-events: none; opacity: 0; transition: opacity 0.2s;
+    }
+    .card-3d:hover .card-shine { opacity: 1; }
+
+    /* ─── ANNOUNCEMENT STRIP ─── */
+    .announcement {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #0d0d0d, #1a0500);
+      border-top: 1px solid rgba(255,69,0,0.2);
+      border-bottom: 1px solid rgba(255,69,0,0.2);
+      padding: 6rem 3rem;
+    }
+    .announcement::before {
+      content: ''; position: absolute;
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,69,0,0.12), transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+    }
+    .announcement-inner { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; }
+    .announce-badge {
+      display: inline-block; background: var(--orange); color: #000;
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 2px;
+      padding: 0.4rem 1.2rem; border-radius: 4px; margin-bottom: 2rem;
+    }
+    .announcement h2 {
+      font-size: clamp(3rem, 7vw, 7rem); font-weight: 800;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+      line-height: 1.05;
+    }
+    .announcement h2 em { font-style: normal; color: var(--orange); }
+    .announcement p { color: rgba(255,255,255,0.55); font-size: 1.1rem; line-height: 1.7; max-width: 700px; margin: 0 auto 2.5rem; }
+    .announce-highlight {
+      color: var(--green); font-weight: 700; font-size: 1.3rem; margin-bottom: 2.5rem; display: block;
+    }
+
+    /* ─── PROBLEM SECTION ─── */
+    .problem-section { padding: 8rem 3rem; background: #060606; }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .problem-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .problem-item {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding: 1.5rem; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02);
+      transition: all 0.3s;
+    }
+    .problem-item:hover { background: rgba(255,69,0,0.05); border-color: rgba(255,69,0,0.2); transform: translateX(6px); }
+    .problem-icon { font-size: 2rem; flex-shrink: 0; }
+    .problem-item h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .problem-item p { color: rgba(255,255,255,0.45); font-size: 0.95rem; line-height: 1.5; }
+
+    /* ─── COMPARISON TABLE ─── */
+    .compare-section { padding: 8rem 3rem; background: var(--black); }
+    .compare-table { max-width: 1000px; margin: 4rem auto 0; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+    .compare-header {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      background: var(--grey); padding: 1.5rem 2rem;
+    }
+    .compare-col-head { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+    .compare-col-head.ours { color: var(--orange); }
+    .compare-row {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      padding: 1.2rem 2rem; border-top: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+    .compare-row:hover { background: rgba(255,255,255,0.02); }
+    .compare-feature { color: rgba(255,255,255,0.55); font-size: 0.95rem; font-weight: 500; display: flex; align-items: center; }
+    .compare-val { display: flex; align-items: center; font-size: 0.95rem; font-weight: 600; }
+    .compare-val.bad { color: #ff5555; }
+    .compare-val.good { color: var(--green); }
+
+    /* ─── TECH CAROUSEL ─── */
+    .tech-scroll {
+      background: #0a0a0a; padding: 1.5rem 0;
+      overflow: hidden; white-space: nowrap; display: flex;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .tech-track {
+      display: flex; animation: techScroll 12s linear infinite;
+      font-family: 'Syne', sans-serif; font-size: 2rem;
+      font-weight: 800; text-transform: uppercase; letter-spacing: -1px;
+      align-items: center;
+    }
+    .tech-word { margin: 0 1.5rem; color: rgba(255,255,255,0.08); transition: color 0.3s; }
+    .tech-word.colored { color: var(--orange); }
+    .tech-dot { color: var(--orange); margin: 0 0.5rem; font-size: 0.8rem; }
+    @keyframes techScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── FAQ SECTION ─── */
+    .faq-section { padding: 8rem 3rem; }
+    .faq-wrap { max-width: 800px; margin: 4rem auto 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem 0; cursor: pointer;
+    }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+      font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800;
+      text-transform: uppercase;
+    }
+    .faq-toggle {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0; transition: all 0.3s; color: var(--orange);
+    }
+    .faq-a { color: rgba(255,255,255,0.5); font-size: 1rem; line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding-top 0.4s; }
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 1rem; }
+    .faq-item.open .faq-toggle { background: var(--orange); color: #000; transform: rotate(45deg); }
+
+    /* ─── BENTO FEATURES ─── */
+    .bento-section { padding: 8rem 3rem; background: #050505; }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1.5rem;
+      max-width: 1200px; margin: 4rem auto 0;
+    }
+    .bento {
+      border-radius: 16px; padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--grey); position: relative;
+      overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .bento:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .bento-wide { grid-column: span 2; }
+    .bento-tall { grid-row: span 2; }
+    .bento.orange { background: var(--orange); }
+    .bento.orange h3, .bento.orange p, .bento.orange .bento-icon { color: #000; }
+    .bento.dark { background: #0d0d0d; }
+    .bento-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .bento h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .bento p { color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.6; }
+    .bento.orange p { color: rgba(0,0,0,0.6); }
+    .bento-badge {
+      position: absolute; bottom: 1.5rem; right: 1.5rem;
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);
+      padding: 0.3rem 0.8rem; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .bento.orange .bento-badge { background: rgba(0,0,0,0.15); color: rgba(0,0,0,0.5); }
+
+    /* ─── COMMUNITY SECTION ─── */
+    .community-section {
+      padding: 8rem 3rem; position: relative; overflow: hidden;
+      background: linear-gradient(to bottom, #000, #080808);
+    }
+    .community-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    .community-visual {
+      position: relative;
+    }
+    .avatar-stack {
+      display: flex; gap: -0.5rem; margin-bottom: 1.5rem;
+    }
+    .avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 2px solid var(--black); font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--grey); margin-left: -8px;
+    }
+    .avatar:first-child { margin-left: 0; }
+    .launch-pill {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(255,69,0,0.08); border: 1px solid rgba(255,69,0,0.2);
+      padding: 0.6rem 1.2rem; border-radius: 100px; margin-bottom: 1.5rem;
+    }
+    .community-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .comm-card {
+      background: var(--grey); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .comm-card:hover { transform: translateX(6px); border-color: rgba(255,69,0,0.3); }
+    .comm-card-icon { font-size: 1.5rem; }
+    .comm-card-text { font-size: 0.9rem; font-weight: 600; }
+    .comm-card-sub { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      padding: 10rem 3rem;
+      background: linear-gradient(to bottom, #0a0a0a, #000);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute;
+      width: 1000px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,69,0,0.08), transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+    }
+    .cta-section h2 {
+      font-size: clamp(4rem, 9vw, 9rem); font-weight: 800;
+      text-transform: uppercase; position: relative; z-index: 2;
+      line-height: 1; margin-bottom: 2rem;
+    }
+    .cta-section h2 .cta-outline {
+      -webkit-text-stroke: 2px rgba(255,255,255,0.15);
+      -webkit-text-fill-color: transparent;
+    }
+    .cta-section p { position: relative; z-index: 2; color: rgba(255,255,255,0.45); font-size: 1.1rem; margin-bottom: 3rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #030303; border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 5rem 3rem 2.5rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
+      max-width: 1200px; margin: 0 auto 4rem;
+    }
+    .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
+    .footer-logo span { color: var(--orange); }
+    .footer-desc { color: rgba(255,255,255,0.35); font-size: 0.9rem; line-height: 1.6; }
+    .footer-col h5 {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.4);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 0.8rem; }
+    .footer-links a { color: rgba(255,255,255,0.55); font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex; justify-content: space-between; align-items: center;
+      color: rgba(255,255,255,0.2); font-size: 0.85rem;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .card-grid-3d { grid-template-columns: 1fr 1fr; }
+      .bento-grid { grid-template-columns: 1fr 1fr; }
+      .bento-wide { grid-column: span 2; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .community-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      header { padding: 1rem 1.5rem; }
       nav { display: none; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+      .card-grid-3d { grid-template-columns: 1fr; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-wide { grid-column: span 1; }
+      .compare-header, .compare-row { grid-template-columns: 1fr 1fr 1fr; padding: 1rem; font-size: 0.8rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .floating-section, .problem-section, .compare-section, .faq-section, .bento-section, .community-section, .cta-section { padding: 5rem 1.5rem; }
     }
-  
-    /* 3D Tilt CSS */
-    .tilt-card {
-      transition: transform 0.1s ease-out;
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-    .tilt-card > * {
-      transform: translateZ(20px);
-    }
-</style>
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+  </style>
 </head>
 <body>
 
-  <!-- Marquee -->
-  <div class="marquee">
-    <div class="marquee-text">EMO LEARNERS 🚀 LEARN AI 🚀 BUILD SKILLS 🚀 GET INTERNSHIPS 🚀 EMO LEARNERS 🚀 LEARN AI 🚀 BUILD SKILLS 🚀 GET INTERNSHIPS 🚀</div>
-    <div class="marquee-text">EMO LEARNERS 🚀 LEARN AI 🚀 BUILD SKILLS 🚀 GET INTERNSHIPS 🚀 EMO LEARNERS 🚀 LEARN AI 🚀 BUILD SKILLS 🚀 GET INTERNSHIPS 🚀</div>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Ticker -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">🚀 EMO Learners</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Learn AI</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Build Skills</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Get Internships</span><span class="ticker-item">·</span>
+      <span class="ticker-item">100% Free</span><span class="ticker-item">·</span>
+      <span class="ticker-item">For Indian Students</span><span class="ticker-item">·</span>
+      <span class="ticker-item">🐍 30 Day Python Challenge</span><span class="ticker-item">·</span>
+      <!-- Duplicate -->
+      <span class="ticker-item">🚀 EMO Learners</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Learn AI</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Build Skills</span><span class="ticker-item">·</span>
+      <span class="ticker-item">Get Internships</span><span class="ticker-item">·</span>
+      <span class="ticker-item">100% Free</span><span class="ticker-item">·</span>
+      <span class="ticker-item">For Indian Students</span><span class="ticker-item">·</span>
+      <span class="ticker-item">🐍 30 Day Python Challenge</span><span class="ticker-item">·</span>
+    </div>
   </div>
 
   <!-- Header -->
   <header>
-    <a href="/index.html" class="logo">🚀 EMO Learners</a>
+    <a href="#" class="logo">🚀 EMO <span>Learners</span></a>
     <nav>
-      <a href="/index.html" class="active">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/resources.html">Resources</a>
-      <a href="/internships.html">Internships</a>
+      <a href="#" class="active">Home</a>
+      <a href="#">About</a>
+      <a href="#">Resources</a>
+      <a href="#">Internships</a>
     </nav>
-    <div class="nav-actions">
-      
-    </div>
+    <a href="#" class="nav-cta">Join Free →</a>
   </header>
 
-  <!-- Hero Section -->
+  <!-- ─── HERO ─── -->
   <section class="hero">
-    <div class="hero-text">
-      <div style="font-family: var(--nyc-font-head); font-size: 1.5rem; margin-bottom: 1rem; background: #000; color: #fff; display: inline-block; padding: 0.2rem 1rem;">// FOR STUDENTS WHO WANT MORE</div>
-      <h1>STOP WASTING TIME. <br><span>GET THE BEST AI TOOLS.</span></h1>
-      <p>AI tools, study resources, skill-building, internships, and career guidance -> all in one place, built exclusively for Indian students.</p>
-      <div style="display: flex; gap: 1rem;">
-        <a href="/resources.html" class="btn btn-primary">Explore Resources</a>
-        <a href="https://instagram.com/emolearners" target="_blank" class="btn">🚀 Follow Us</a>
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        Built for Indian Students
       </div>
-    </div>
-    <div class="hero-image tilt-card">
-      <div class="badge">100% FREE</div>
-      <img src="hero.png" alt="Indian Student Coding">
-    </div>
-  </section>
-
-  <!-- Python Challenge Announcement -->
-  <section class="challenge-banner">
-    <div class="eyebrow">ANNOUNCEMENT</div>
-    <h2>🐍 30 DAYS PYTHON CHALLENGE</h2>
-    <p>From 1st July to 30th July, I'll be uploading 1 Python video every single day—starting from the absolute basics and progressing to advanced concepts with practical examples. Whether you're a complete beginner or looking to strengthen your programming skills, this challenge is for you.</p>
-    <p style="color: var(--nyc-yellow); font-size: 1.5rem; margin-bottom: 2rem;">💯 Free to join. All you need is consistency.</p>
-    <a href="https://instagram.com/emolearners" target="_blank" class="btn">📌 Follow @emolearners for Day 1</a>
-  </section>
-
-  
-
-  <!-- The Problem Section (NYC Style) -->
-  <section class="problem-section" style="padding: 6rem 2rem; border-bottom: 1px solid #000; background: #fff;">
-    <div class="container" style="max-width: 1400px; padding: 0;">
-      <div style="text-align: center; margin-bottom: 4rem;">
-        <div style="background: #000; color: #fff; display: inline-block; padding: 0.5rem 1rem; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 1.5rem; margin-bottom: 1rem; text-transform: uppercase;">// The Reality</div>
-        <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: clamp(3rem, 6vw, 6rem); color: #000; line-height: 1; text-transform: uppercase;">THE COLLEGE SYSTEM <br><span style="color: #121212;">IS BROKEN.</span></h2>
+      <h1>
+        <span class="line">Stop Wasting</span>
+        <span class="line highlight">Time.</span>
+        <span class="line outline-text">Start Building.</span>
+      </h1>
+      <p class="hero-sub">AI tools, study resources, skill-building, internships, and career guidance → all in one place. Built exclusively for ambitious Indian students.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Explore Resources →</a>
+        <a href="https://instagram.com/emolearners" target="_blank" class="btn-ghost">🚀 Follow @emolearners</a>
       </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-        
-        <div style="border: 2px solid #000; padding: 2rem; background: #fff; display: flex; flex-direction: column;" class="tilt-card gap: 1rem;">
-          <div style="font-size: 3rem;">📚</div>
-          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 2.5rem; text-transform: uppercase;">Outdated Syllabus</h3>
-          <p style="font-size: 1.1rem; font-weight: 500;">Learning 10-year-old theory won't get you a job today. The industry moves fast, college doesn't.</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Free Forever</span>
         </div>
-
-        <div style="border: 2px solid #000; padding: 2rem; background: #00FF66; display: flex; flex-direction: column;" class="tilt-card gap: 1rem;">
-          <div style="font-size: 3rem;">📉</div>
-          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 2.5rem; text-transform: uppercase;">No Real Skills</h3>
-          <p style="font-size: 1.1rem; font-weight: 500;">Degrees don't build software. Companies hire for what you can build, not what you can memorize.</p>
+        <div class="stat-item">
+          <span class="stat-num">30</span>
+          <span class="stat-label">Day Python Challenge</span>
         </div>
-
-        <div style="border: 2px solid #000; padding: 2rem; background: #000; color: #fff; display: flex; flex-direction: column;" class="tilt-card gap: 1rem;">
-          <div style="font-size: 3rem;">🤯</div>
-          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 2.5rem; text-transform: uppercase;">Info Overload</h3>
-          <p style="font-size: 1.1rem; font-weight: 500; color: #ccc;">Too many YouTube tutorials, no clear roadmap. You end up in tutorial hell making zero progress.</p>
+        <div class="stat-item">
+          <span class="stat-num">Jul 1</span>
+          <span class="stat-label">Challenge Starts</span>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison Section (NYC Style) -->
-  <section style="padding: 6rem 2rem; border-bottom: 1px solid #000; background: #fafafa;">
-    <div class="container" style="max-width: 1200px; padding: 0;">
-      <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: clamp(3rem, 6vw, 5rem); text-align: center; margin-bottom: 4rem; text-transform: uppercase;">WE ARE NOT YOUR <br><span style="color: #121212;">AVERAGE COLLEGE</span></h2>
-      
-      <div style="border: 2px solid #000; background: #fff;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid #000; background: #000; color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 1.5rem; text-transform: uppercase; text-align: center;">
-          <div style="padding: 1.5rem; border-right: 1px solid #333;">Feature</div>
-          <div style="padding: 1.5rem; border-right: 1px solid #333; color: #ff4444;">Traditional College</div>
-          <div style="padding: 1.5rem; color: #00FF66;">EMO Learners</div>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid #000; text-align: center; font-weight: 600; font-size: 1.2rem;">
-          <div style="padding: 1.5rem; border-right: 1px solid #000; display: flex; align-items: center; justify-content: center;">Focus</div>
-          <div style="padding: 1.5rem; border-right: 1px solid #000; background: #fff0f0;">Passing Exams 📝</div>
-          <div style="padding: 1.5rem; background: #f0fff0;">Building Skills 🚀</div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid #000; text-align: center; font-weight: 600; font-size: 1.2rem;">
-          <div style="padding: 1.5rem; border-right: 1px solid #000; display: flex; align-items: center; justify-content: center;">Tools Used</div>
-          <div style="padding: 1.5rem; border-right: 1px solid #000; background: #fff0f0;">Pen & Paper 🖋️</div>
-          <div style="padding: 1.5rem; background: #f0fff0;">Modern AI & Tech Stack 🤖</div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; text-align: center; font-weight: 600; font-size: 1.2rem;">
-          <div style="padding: 1.5rem; border-right: 1px solid #000; display: flex; align-items: center; justify-content: center;">Pace</div>
-          <div style="padding: 1.5rem; border-right: 1px solid #000; background: #fff0f0;">4 Years 🐢</div>
-          <div style="padding: 1.5rem; background: #f0fff0;">Learn at your speed ⚡</div>
+        <div class="stat-item">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">Resources</span>
         </div>
       </div>
     </div>
   </section>
 
-  
-
-  <!-- Infinite Tech Carousel -->
-  <style>
-    .tech-carousel { background: #121212; color: #00FF66; padding: 2rem 0; overflow: hidden; white-space: nowrap; display: flex; border-bottom: 2px solid #000; border-top: 2px solid #000; box-shadow: var(--emo-shadow); position: relative; z-index: 10; margin-top: -2px; }
-    .tech-track { display: flex; animation: scroll-fast 10s linear infinite; font-family: var(--nyc-font-head); font-size: 3rem; text-transform: uppercase; }
-    .tech-item { margin: 0 2rem; }
-    @keyframes scroll-fast { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  </style>
-  <div class="tech-carousel">
+  <!-- ─── TECH CAROUSEL ─── -->
+  <div class="tech-scroll">
     <div class="tech-track">
-      <div class="tech-item">PYTHON</div><div class="tech-item">★</div>
-      <div class="tech-item">AI TOOLS</div><div class="tech-item">★</div>
-      <div class="tech-item">MACHINE LEARNING</div><div class="tech-item">★</div>
-      <div class="tech-item">DATA SCIENCE</div><div class="tech-item">★</div>
-      <div class="tech-item">REACT</div><div class="tech-item">★</div>
-      <!-- Duplicate for infinite scroll loop -->
-      <div class="tech-item">PYTHON</div><div class="tech-item">★</div>
-      <div class="tech-item">AI TOOLS</div><div class="tech-item">★</div>
-      <div class="tech-item">MACHINE LEARNING</div><div class="tech-item">★</div>
-      <div class="tech-item">DATA SCIENCE</div><div class="tech-item">★</div>
-      <div class="tech-item">REACT</div><div class="tech-item">★</div>
+      <span class="tech-word colored">Python</span><span class="tech-dot">●</span>
+      <span class="tech-word">Machine Learning</span><span class="tech-dot">●</span>
+      <span class="tech-word colored">AI Tools</span><span class="tech-dot">●</span>
+      <span class="tech-word">Data Science</span><span class="tech-dot">●</span>
+      <span class="tech-word colored">React</span><span class="tech-dot">●</span>
+      <span class="tech-word">Deep Learning</span><span class="tech-dot">●</span>
+      <span class="tech-word colored">GitHub</span><span class="tech-dot">●</span>
+      <span class="tech-word">Backend Dev</span><span class="tech-dot">●</span>
+      <span class="tech-word colored">Internships</span><span class="tech-dot">●</span>
+      <!-- Duplicate -->
+      <span class="tech-word">Python</span><span class="tech-dot">●</span>
+      <span class="tech-word colored">Machine Learning</span><span class="tech-dot">●</span>
+      <span class="tech-word">AI Tools</span><span class="tech-dot">●</span>
+      <span class="tech-word colored">Data Science</span><span class="tech-dot">●</span>
+      <span class="tech-word">React</span><span class="tech-dot">●</span>
+      <span class="tech-word colored">Deep Learning</span><span class="tech-dot">●</span>
+      <span class="tech-word">GitHub</span><span class="tech-dot">●</span>
+      <span class="tech-word colored">Backend Dev</span><span class="tech-dot">●</span>
+      <span class="tech-word">Internships</span><span class="tech-dot">●</span>
     </div>
   </div>
 
-  <!-- FAQ Section -->
-  <section style="padding: 6rem 2rem; background: #121212; color: #fff; border-bottom: 2px solid #000;">
-    <div class="container" style="max-width: 1000px; padding: 0;">
-      <h2 style="font-family: var(--nyc-font-head); font-size: clamp(3rem, 6vw, 5rem); text-align: center; margin-bottom: 4rem; text-transform: uppercase; color: #00FF66;">FREQUENTLY ASKED.</h2>
-      
-      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <div class="tilt-card" style="border: 2px solid #fff; box-shadow: var(--emo-shadow); padding: 2rem; background: #000;">
-          <h3 style="font-family: var(--nyc-font-head); font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase;">Is EMO Learners completely free?</h3>
-          <p style="font-size: 1.1rem; color: #ccc;">Yes! All the challenges, roadmaps, and community access are 100% free. We believe in open education.</p>
+  <!-- ─── WHAT YOU GET ─── -->
+  <section class="floating-section">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="reveal">
+        <span class="section-tag">// What We Offer</span>
+        <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+        <p class="section-sub">Curated tools, structured challenges, and real opportunities — cut through the noise.</p>
+      </div>
+      <div class="card-grid-3d reveal">
+
+        <div class="card-3d accent" data-tilt>
+          <div class="card-shine"></div>
+          <span class="card-num">01</span>
+          <span class="card-icon">🤖</span>
+          <h3>AI Tools</h3>
+          <p>The best AI tools that actually help students study faster, build better projects, and stand out.</p>
+          <a href="#" class="card-link">View Directory →</a>
         </div>
-        <div class="tilt-card" style="border: 2px solid #fff; box-shadow: var(--emo-shadow); padding: 2rem; background: #000;">
-          <h3 style="font-family: var(--nyc-font-head); font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase;">Do I need prior coding knowledge?</h3>
-          <p style="font-size: 1.1rem; color: #ccc;">Not at all. The 30 Days Python Challenge starts from absolute zero and builds you up to an advanced level.</p>
+
+        <div class="card-3d" data-tilt>
+          <div class="card-shine"></div>
+          <span class="card-num">02</span>
+          <span class="card-icon">💻</span>
+          <h3>Internships</h3>
+          <p>Exclusive access to internship opportunities curated specifically for tech students. Real experience, real growth.</p>
+          <a href="#" class="card-link" style="color:rgba(255,255,255,0.4);">Coming Soon →</a>
         </div>
-        <div class="tilt-card" style="border: 2px solid #fff; box-shadow: var(--emo-shadow); padding: 2rem; background: #000;">
-          <h3 style="font-family: var(--nyc-font-head); font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase;">When do internships open?</h3>
-          <p style="font-size: 1.1rem; color: #ccc;">Internships are currently "Coming Soon". Join our Telegram community to be the first to know when we launch them.</p>
+
+        <div class="card-3d green-accent" data-tilt>
+          <div class="card-shine"></div>
+          <span class="card-num">03</span>
+          <span class="card-icon">👥</span>
+          <h3>Community</h3>
+          <p>Join a Telegram full of builders who share resources, opportunities, and accountability.</p>
+          <a href="https://t.me/emolarners" target="_blank" class="card-link" style="color:var(--green);">Join Telegram →</a>
+        </div>
+
+        <div class="card-3d" data-tilt>
+          <div class="card-shine"></div>
+          <span class="card-num">04</span>
+          <span class="card-icon">🗺️</span>
+          <h3>Roadmaps</h3>
+          <p>Clear, step-by-step learning paths from zero to job-ready. No more tutorial hell.</p>
+          <a href="#" class="card-link">Explore →</a>
+        </div>
+
+        <div class="card-3d accent" data-tilt style="grid-column: span 2;">
+          <div class="card-shine"></div>
+          <span class="card-num">05</span>
+          <span class="card-icon">🐍</span>
+          <h3>30 Days Python Challenge</h3>
+          <p>One video every single day from July 1st to 30th. Starting from absolute zero and building up to real projects. Completely free — all you need is consistency.</p>
+          <a href="https://instagram.com/emolearners" target="_blank" class="card-link">Join the Challenge →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ANNOUNCEMENT ─── -->
+  <section class="announcement">
+    <div class="announcement-inner reveal">
+      <div class="announce-badge">🔥 New Challenge</div>
+      <h2>🐍 <em>30 Days</em><br>Python.</h2>
+      <p>Starting July 1st. One free Python video per day — from the absolute basics to real-world projects. Whether you're brand new to coding or strengthening existing skills, this is built for you.</p>
+      <span class="announce-highlight">💯 Free to join. All you need is consistency.</span>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://instagram.com/emolearners" target="_blank" class="btn-primary">📌 Follow @emolearners</a>
+        <a href="https://t.me/emolarners" target="_blank" class="btn-ghost">Join Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── THE PROBLEM ─── -->
+  <section class="problem-section">
+    <div class="problem-grid">
+      <div class="reveal">
+        <span class="section-tag">// The Reality</span>
+        <h2 class="section-title">The college system is broken.</h2>
+        <p class="section-sub">Nobody's going to say it, so we will. Here's why most students struggle to get hired.</p>
+      </div>
+      <div class="problem-list reveal">
+        <div class="problem-item">
+          <div class="problem-icon">📚</div>
+          <div>
+            <h4>Outdated Syllabus</h4>
+            <p>You're studying 10-year-old theory while the industry runs on tools that didn't exist back then.</p>
+          </div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-icon">📉</div>
+          <div>
+            <h4>No Real Skills</h4>
+            <p>Degrees don't ship software. Companies hire for what you can build, not what you can memorize.</p>
+          </div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-icon">🤯</div>
+          <div>
+            <h4>Information Overload</h4>
+            <p>Too many YouTube tutorials, no clear roadmap. You end up in tutorial hell making zero real progress.</p>
+          </div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-icon">🔗</div>
+          <div>
+            <h4>No Network</h4>
+            <p>Most opportunities come through connections. Without the right community, you'll miss them all.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- Visual Break / Image Section -->
-  <section style="border-bottom: 1px solid #000; display: flex;">
-    <div style="flex: 1; border-right: 1px solid #000; padding: 4rem; display: flex; align-items: center; justify-content: center; background: #121212; color: #fff;">
-        <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 4rem; text-transform: uppercase; line-height: 1;">JOIN A TRIBE OF <br><span style="color: #00FF66;">BUILDERS.</span></h2>
-    </div>
-    <div style="flex: 1;">
-        <img src="community.png" alt="Community" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  <!-- ─── COMPARISON ─── -->
+  <section class="compare-section">
+    <div style="max-width:1200px; margin:0 auto; text-align:center;">
+      <span class="section-tag">// The Difference</span>
+      <h2 class="section-title reveal">Not your average college.</h2>
+      <div class="compare-table reveal">
+        <div class="compare-header">
+          <div class="compare-col-head">What We Compare</div>
+          <div class="compare-col-head" style="color:#ff5555;">Traditional College</div>
+          <div class="compare-col-head ours">EMO Learners</div>
+        </div>
+        <div class="compare-row"><div class="compare-feature">Focus</div><div class="compare-val bad">❌ Passing Exams</div><div class="compare-val good">✅ Building Skills</div></div>
+        <div class="compare-row"><div class="compare-feature">Tools Used</div><div class="compare-val bad">❌ Pen & Paper</div><div class="compare-val good">✅ Modern AI Stack</div></div>
+        <div class="compare-row"><div class="compare-feature">Pace</div><div class="compare-val bad">❌ Fixed 4 Years</div><div class="compare-val good">✅ Your Speed</div></div>
+        <div class="compare-row"><div class="compare-feature">Cost</div><div class="compare-val bad">❌ Lakhs of Rupees</div><div class="compare-val good">✅ 100% Free</div></div>
+        <div class="compare-row"><div class="compare-feature">Content</div><div class="compare-val bad">❌ Theoretical Only</div><div class="compare-val good">✅ Practical Projects</div></div>
+        <div class="compare-row"><div class="compare-feature">Community</div><div class="compare-val bad">❌ Competitive Peers</div><div class="compare-val good">✅ Builders & Mentors</div></div>
+        <div class="compare-row"><div class="compare-feature">Outcome</div><div class="compare-val bad">❌ A Certificate</div><div class="compare-val good">✅ A Portfolio</div></div>
+      </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section style="padding: 6rem 2rem; background: #00FF66; border-bottom: 1px solid #000; text-align: center;">
-    <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: clamp(4rem, 8vw, 7rem); text-transform: uppercase; margin-bottom: 2rem; line-height: 0.9;">READY TO <br>LEVEL UP?</h2>
-    <p style="font-size: 1.5rem; font-weight: 600; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Stop waiting for the perfect time. Start building your skills today with EMO Learners.</p>
-    <a href="/login.html" class="btn btn-dark" style="font-size: 2rem; padding: 1.5rem 4rem;">JOIN NOW 🚀</a>
-  </section>
-
-
-  <!-- Bento Features -->
+  <!-- ─── BENTO FEATURES ─── -->
   <section class="bento-section">
-    <div class="bento-header">
-      <h2>WHAT YOU'LL GET</h2>
-    </div>
-    <div class="bento-grid">
-      
-      <div class="bento-card yellow tilt-card">
-        <div class="icon">🤖</div>
-        <div>
-          <h3>AI TOOLS</h3>
-          <p>Discover the best AI tools that actually help students study faster and build better projects.</p>
+    <div style="max-width:1200px; margin:0 auto;">
+      <span class="section-tag">// Features</span>
+      <h2 class="section-title reveal">Built for builders.</h2>
+      <div class="bento-grid reveal">
+        <div class="bento orange bento-wide">
+          <span class="bento-icon">🚀</span>
+          <h3>Zero to Hired</h3>
+          <p>Full roadmaps that take you from absolute beginner to job-ready in the shortest time possible.</p>
         </div>
-        <a href="/resources.html" class="btn btn-dark">View Directory →</a>
-      </div>
-
-      <div class="bento-card blue tilt-card">
-        <div class="icon">💻</div>
-        <div>
-          <h3>INTERNSHIPS</h3>
-          <p>Get exclusive access to internship opportunities curated specifically for tech students.</p>
+        <div class="bento dark">
+          <span class="bento-icon">🤖</span>
+          <h3>AI First</h3>
+          <p>Learn with AI tools that 10x your productivity.</p>
+          <div class="bento-badge">New</div>
         </div>
-        <a href="/internships.html" class="btn" style="background: #fff; color: #000;">Coming Soon →</a>
-      </div>
-
-      <div class="bento-card tilt-card">
-        <div class="icon">📈</div>
-        <div>
-          <h3>COMMUNITY</h3>
-          <p>Join a network of ambitious students building real projects and sharing knowledge.</p>
+        <div class="bento dark">
+          <span class="bento-icon">📈</span>
+          <h3>Track Progress</h3>
+          <p>Daily challenges that keep you moving forward.</p>
         </div>
-        <a href="https://t.me/emolarners" target="_blank" class="btn btn-primary">Join Telegram →</a>
+        <div class="bento" style="background:linear-gradient(135deg,#0a0a1a,#0d0d2b); border-color:rgba(100,100,255,0.15);">
+          <span class="bento-icon">🌐</span>
+          <h3>Open Access</h3>
+          <p>Every resource, every roadmap, every tool — permanently free.</p>
+        </div>
+        <div class="bento" style="background:linear-gradient(135deg,#001a0d,#002d1a); border-color:rgba(0,255,136,0.15);">
+          <span class="bento-icon">💬</span>
+          <h3>Community</h3>
+          <p>1000+ students building together in Telegram.</p>
+          <div class="bento-badge" style="background:rgba(0,255,136,0.15); color:var(--green);">Active</div>
+        </div>
+        <div class="bento bento-wide" style="background:#0d0d0d;">
+          <span class="bento-icon">🏆</span>
+          <h3>Internship Board</h3>
+          <p>Curated internship opportunities for students who are ready. Not just listings — verified, current, and relevant to what you've been learning.</p>
+          <div class="bento-badge">Coming Soon</div>
+        </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Social Links Footer -->
-  
-  <!-- Comprehensive Footer -->
-  <footer style="background: #000; color: #fff; padding: 6rem 2rem 2rem; border-top: 1px solid #000;">
-    <div class="container" style="max-width: 1400px; padding: 0;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
-        <div>
-          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">🚀 EMO Learners</div>
-          <p style="font-size: 1.1rem; color: #ccc;">Helping students learn smarter, build skills, and grow their careers.</p>
+  <!-- ─── COMMUNITY SECTION ─── -->
+  <section class="community-section">
+    <div class="community-inner">
+      <div class="reveal">
+        <span class="section-tag">// The Tribe</span>
+        <h2 class="section-title">Join a community<br>of builders.</h2>
+        <p style="color:rgba(255,255,255,0.45); font-size:1.1rem; line-height:1.7; margin-bottom:2.5rem;">Stop learning alone. We're building a community where ambitious students share resources, hold each other accountable, and grow together. Be part of it from day one.</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://t.me/emolarners" target="_blank" class="btn-primary">Join Telegram →</a>
+          <a href="https://instagram.com/emolearners" target="_blank" class="btn-ghost">Follow on Instagram</a>
         </div>
-        <div>
-          <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1.5rem; color: #00FF66;">Follow</h4>
-          <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <a href="https://instagram.com/emolearners" target="_blank" style="color: #fff; font-size: 1.1rem; text-decoration: underline;">Instagram</a>
-            <a href="https://www.linkedin.com/in/mohit-ahirwar-12bb58386/" target="_blank" style="color: #fff; font-size: 1.1rem; text-decoration: underline;">LinkedIn</a>
-            <a href="https://t.me/emolarners" target="_blank" style="color: #fff; font-size: 1.1rem; text-decoration: underline;">Telegram Community</a>
-            <a href="https://www.youtube.com/@emolearners" target="_blank" style="color: #fff; font-size: 1.1rem; text-decoration: underline;">YouTube</a>
+      </div>
+      <div class="community-visual reveal">
+        <div class="launch-pill">
+          <span style="color:var(--orange); font-size:0.9rem;">🔥</span>
+          <span style="font-size:0.9rem; font-weight:600;">Freshly launched — be one of the first</span>
+        </div>
+        <div class="community-cards">
+          <div class="comm-card">
+            <div class="comm-card-icon">📱</div>
+            <div>
+              <div class="comm-card-text">Telegram Community</div>
+              <div class="comm-card-sub">Daily tips, resources & discussions</div>
+            </div>
           </div>
-        </div>
-        <div>
-          <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -1px; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1.5rem; color: #121212;">Support</h4>
-          <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <a href="https://t.me/Emomohit" target="_blank" style="color: #fff; font-size: 1.1rem; text-decoration: underline;">Contact Us</a>
-            <a href="mailto:hello.emolearners@gmail.com" style="color: #fff; font-size: 1.1rem; text-decoration: underline;">hello.emolearners@gmail.com</a>
-            <a href="privacy-policy.html" style="color: #fff; font-size: 1.1rem; text-decoration: underline;">Privacy Policy</a>
+          <div class="comm-card">
+            <div class="comm-card-icon">📸</div>
+            <div>
+              <div class="comm-card-text">Instagram @emolearners</div>
+              <div class="comm-card-sub">Daily Python videos & AI insights</div>
+            </div>
+          </div>
+          <div class="comm-card">
+            <div class="comm-card-icon">▶️</div>
+            <div>
+              <div class="comm-card-text">YouTube Channel</div>
+              <div class="comm-card-sub">In-depth tutorials & walkthroughs</div>
+            </div>
+          </div>
+          <div class="comm-card">
+            <div class="comm-card-icon">💼</div>
+            <div>
+              <div class="comm-card-text">LinkedIn</div>
+              <div class="comm-card-sub">Career tips & professional network</div>
+            </div>
           </div>
         </div>
       </div>
-      <div style="border-top: 1px solid #333; padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #888;">
-        <span>© 2026 EMO Learners</span>
-        <span>Built for students, by students.</span>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="faq-section">
+    <div style="max-width:1200px; margin:0 auto; text-align:center;">
+      <span class="section-tag">// Got Questions?</span>
+      <h2 class="section-title reveal">Frequently asked.</h2>
+      <div class="faq-wrap reveal">
+        <div class="faq-item open">
+          <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+            Is EMO Learners completely free?
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Yes — 100%, permanently. All challenges, roadmaps, resources and community access cost nothing. We believe education should be accessible to every student, not just those who can afford premium courses.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+            Do I need prior coding knowledge?
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Not at all. The 30 Days Python Challenge starts from absolute zero and builds you up step by step. If you can open a browser, you can start learning today.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+            When does the Python challenge start?
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">July 1st to July 30th. One video uploaded every single day. Follow @emolearners on Instagram and join the Telegram group so you don't miss Day 1.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+            When do internships open?
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Internships are launching soon. Join the Telegram community and you'll be the very first to know when we go live with listings.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+            Who is this for?
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-a">Indian college students and freshers who want to build real skills, learn modern tech, and land internships or jobs — without spending money on overpriced bootcamps.</div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="cta-section">
+    <h2>
+      <span class="cta-outline">Ready to</span><br>
+      Level Up?
+    </h2>
+    <p>Stop waiting for the "right time." Start building your skills today.</p>
+    <div style="position:relative; z-index:2; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="#" class="btn-primary" style="font-size:1.1rem; padding:1.2rem 3rem;">Join Free — It's 100% Free 🚀</a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">🚀 EMO <span>Learners</span></div>
+        <p class="footer-desc">Helping Indian students learn smarter, build real skills, and launch their tech careers. 100% free, always.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <div class="footer-links">
+          <a href="#">Resources</a>
+          <a href="#">Internships</a>
+          <a href="#">Roadmaps</a>
+          <a href="#">AI Tools</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Community</h5>
+        <div class="footer-links">
+          <a href="https://instagram.com/emolearners" target="_blank">Instagram</a>
+          <a href="https://t.me/emolarners" target="_blank">Telegram</a>
+          <a href="https://www.youtube.com/@emolearners" target="_blank">YouTube</a>
+          <a href="https://www.linkedin.com/in/mohit-ahirwar-12bb58386/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <div class="footer-links">
+          <a href="https://t.me/Emomohit" target="_blank">Contact Us</a>
+          <a href="mailto:hello.emolearners@gmail.com">Email Us</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">About</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 EMO Learners. All rights reserved.</span>
+      <span>Built for students, by students. 🇮🇳</span>
     </div>
   </footer>
 
-
-
-  <!-- 3D Tilt Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const tiltCards = document.querySelectorAll(".tilt-card");
-      
-      tiltCards.forEach(card => {
-        card.addEventListener("mousemove", (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          
-          const rotateX = ((y - centerY) / centerY) * -15; // Max 15 deg tilt
-          const rotateY = ((x - centerX) / centerX) * 15;
-          
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-        });
-        
-        card.addEventListener("mouseleave", () => {
-          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
-          // Smooth return transition
-          card.style.transition = "transform 0.5s ease";
-          setTimeout(() => {
-            card.style.transition = "transform 0.1s ease-out";
-          }, 500);
-        });
+    // ─── CURSOR ───
+    const cursor = document.getElementById('cursor');
+    const trail = document.getElementById('cursorTrail');
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx - 6 + 'px';
+      cursor.style.top = my - 6 + 'px';
+    });
+    function animTrail() {
+      tx += (mx - tx) * 0.12;
+      ty += (my - ty) * 0.12;
+      trail.style.left = tx - 20 + 'px';
+      trail.style.top = ty - 20 + 'px';
+      requestAnimationFrame(animTrail);
+    }
+    animTrail();
+
+    // ─── 3D TILT ───
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(800px) rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale(1.03)`;
+        const shine = card.querySelector('.card-shine');
+        if (shine) {
+          shine.style.background = `radial-gradient(circle at ${(x+0.5)*100}% ${(y+0.5)*100}%, rgba(255,255,255,0.08), transparent 60%)`;
+          shine.style.opacity = '1';
+        }
       });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.5s ease';
+        card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)';
+        const shine = card.querySelector('.card-shine');
+        if (shine) shine.style.opacity = '0';
+        setTimeout(() => card.style.transition = '', 500);
+      });
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.1s ease-out';
+      });
+    });
+
+    // ─── SCROLL REVEAL ───
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ─── FAQ ───
+    function toggleFaq(item) {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ─── HEADER SCROLL ───
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      header.style.borderBottomColor = window.scrollY > 50 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.06)';
+    });
+
+    // ─── HERO TEXT PARALLAX ───
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent && scrollY < window.innerHeight) {
+        heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+        heroContent.style.opacity = 1 - scrollY / 700;
+      }
     });
   </script>
 </body>
-
 </html>
