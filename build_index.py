@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+
+index_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -180,3 +182,8 @@
 
 </body>
 </html>
+"""
+
+with open('e:\\EMO\\index.html', 'w', encoding='utf-8') as f:
+    f.write(index_content)
+print("index.html fully redesigned!")
